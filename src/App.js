@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Header from "./components/Header.js";
+import Footer from "./components/Footer.js";
+import Homepage from "./components/Homepage/Homepage.js";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PageWrapper>
+      <Header />
+      <div>
+        {/* <NavBar /> */}
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <Routes>
+          <Route exact path="/" element={<Homepage />} />
+        </Routes>
+      </div>
+      <div className="separaterBottomFooter" />
+      <Footer />
+    </PageWrapper>
   );
 }
 
-export default App;
+const PageWrapper = styled.div`
+  .separaterBottomFooter {
+    margin-bottom: 60px;
+  }
+  //display:flex;
+  height: 100%;
+  .routeLeft {
+    display: flex;
+    justify-content: left !important;
+  }
+  .routeCenter {
+    display: flex;
+    justify-content: center !important;
+  }
+  .contentWrapper {
+    /* display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:center; */
+  }
+`;
