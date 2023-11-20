@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Header from "./components/Header.js";
+import Header from "./components/Header/Header.js";
 import Footer from "./components/Footer.js";
 import Homepage from "./components/Homepage/Homepage.js";
 
