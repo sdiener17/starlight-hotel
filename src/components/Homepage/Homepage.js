@@ -1,17 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import StyledGameButton from "../StyledGameButton";
 
 export default function Homepage() {
   document.body.style.margin = 0;
-  //const history = useNavigate();
+  const handleNewGameClick = (e) => {
+    //do things
+  };
+  const handleLoadGameClick = (e) => {
+    //do things
+  };
 
   return (
     <PageWrapper>
       <div className="pageMain">
-        <div className="startNewGameOrLoadComponentHere">
-          Here is where the starting screen will be.
-        </div>
+        <StyledGameButton
+          buttonContent={"Start New Game"}
+          buttonDisabled={false}
+          handleButtonClick={handleNewGameClick}
+        />
+        <StyledGameButton
+          buttonContent={"Load Game From File"}
+          buttonDisabled={false}
+          handleButtonClick={handleLoadGameClick}
+        />
       </div>
     </PageWrapper>
   );

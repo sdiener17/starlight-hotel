@@ -1,4 +1,5 @@
 import logo from "./logo.svg";
+import { useState } from "react";
 import "./App.css";
 import styled from "styled-components";
 import { Route, Routes } from "react-router-dom";
@@ -8,10 +9,11 @@ import Footer from "./components/Footer.js";
 import Homepage from "./components/Homepage/Homepage.js";
 
 export default function App() {
+  const [gameStarted, setGameStarted] = useState(false);
   return (
     <PageWrapper>
       <DataProvider>
-        <Header />
+        <Header gameStarted={gameStarted} />
         <div>
           {/* <NavBar /> */}
           {/* <img src={logo} className="App-logo" alt="logo" /> */}

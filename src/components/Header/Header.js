@@ -4,17 +4,21 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 // import NavBar from "./NavBar";
 
-export default function Header() {
+export default function Header({ gameStarted }) {
   document.body.style.margin = 0;
   //const history = useNavigate();
 
   return (
     <PageWrapper>
-      <div className="headerMain">
-        {/* <img src={mainLogo} className="logo" alt="GURPS Book image"></img> */}
-        <div className="headerTitle">The Starlight Hotel</div>
-        {/* <NavBar /> */}
-      </div>
+      {gameStarted ? (
+        <div className="headerMain">
+          {/* <img src={mainLogo} className="logo" alt="GURPS Book image"></img> */}
+          <div className="headerTitle">The Starlight Hotel</div>
+          {/* <NavBar /> */}
+        </div>
+      ) : (
+        <div className="headerMain">Game has not started header</div>
+      )}
     </PageWrapper>
   );
 }
