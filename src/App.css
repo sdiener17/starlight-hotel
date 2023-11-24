@@ -1,3 +1,26 @@
+:root {
+  --primarySiteColor: #6a1bd8;
+  --secondarySiteColor: #956eae;
+  --darkSiteColor: #1d3350;
+  --siteColor4: #1e4578;
+  --lightTeal: #41B3A3;
+  --darkerPink: #d77c99;
+  --purpleTwo: #6166b3;
+  --purpleOne: #373cab;
+  --yellowOne: #eee71e;
+  --primaryRedColor: #eb1737;
+  --lightGrey: #f5f5f5;
+  --cardGrey: #c6c6c6;
+  --darkGrey: #414141;
+  --mediumGrey: #9b9b9b;
+  --mainWhite: #ffffff;
+  --mainBlack: #020202;
+  --softBlack: #1c1c1a;
+  --mainTransition: all 0.3s ease-in-out;
+  --mainSpacing: 0.3rem;
+  --marginBottom: 60px;
+}
+
 .App {
   text-align: center;
 }

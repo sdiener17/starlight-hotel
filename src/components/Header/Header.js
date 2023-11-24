@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import NavBar from "./NavBar";
+// import NavBar from "./NavBar";
 
 export default function Header() {
   document.body.style.margin = 0;
@@ -13,7 +13,7 @@ export default function Header() {
       <div className="headerMain">
         {/* <img src={mainLogo} className="logo" alt="GURPS Book image"></img> */}
         <div className="headerTitle">The Starlight Hotel</div>
-        <NavBar />
+        {/* <NavBar /> */}
       </div>
     </PageWrapper>
   );

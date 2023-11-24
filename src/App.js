@@ -1,5 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
+import styled from "styled-components";
+import { Route, Routes } from "react-router-dom";
+import { DataProvider } from "./data/GameContext.js";
 import Header from "./components/Header/Header.js";
 import Footer from "./components/Footer.js";
 import Homepage from "./components/Homepage/Homepage.js";
@@ -7,16 +10,18 @@ import Homepage from "./components/Homepage/Homepage.js";
 export default function App() {
   return (
     <PageWrapper>
-      <Header />
-      <div>
-        {/* <NavBar /> */}
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <Routes>
-          <Route exact path="/" element={<Homepage />} />
-        </Routes>
-      </div>
-      <div className="separaterBottomFooter" />
-      <Footer />
+      <DataProvider>
+        <Header />
+        <div>
+          {/* <NavBar /> */}
+          {/* <img src={logo} className="App-logo" alt="logo" /> */}
+          <Routes>
+            <Route exact path="/" element={<Homepage />} />
+          </Routes>
+        </div>
+        <div className="separaterBottomFooter" />
+        <Footer />
+      </DataProvider>
     </PageWrapper>
   );
 }

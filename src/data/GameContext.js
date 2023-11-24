@@ -4,7 +4,7 @@ const StatsContext = createContext(null);
 const StatsDispatchContext = createContext(null);
 
 export function DataProvider({ children }) {
-  const [stats, dispatch] = useReducer(tasksReducer, initialStats);
+  const [stats, dispatch] = useReducer(statsReducer, initialStats);
 
   return (
     <StatsContext.Provider value={stats}>
@@ -23,7 +23,7 @@ export function useStatsDispatch() {
   return useContext(StatsDispatchContext);
 }
 
-function tasksReducer(stats, action) {
+function statsReducer(stats, action) {
   switch (action.type) {
     case "added": {
       return [
