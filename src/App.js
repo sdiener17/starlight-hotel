@@ -7,6 +7,7 @@ import { DataProvider } from "./data/GameContext.js";
 import Header from "./components/Header/Header.js";
 import Footer from "./components/Footer.js";
 import Homepage from "./components/Homepage/Homepage.js";
+import Gamepage from "./components/Gamepage/Gamepage.js";
 
 export default function App() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -19,6 +20,7 @@ export default function App() {
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <Routes>
             <Route exact path="/" element={<Homepage />} />
+            <Route path="game" element={<Gamepage />} />
           </Routes>
         </div>
         <div className="separaterBottomFooter" />

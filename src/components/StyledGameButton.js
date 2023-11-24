@@ -20,12 +20,14 @@ export default function StyledGameButton({
 }
 
 const PageWrapper = styled.button`
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  padding: 1rem 1.5rem;
-  font-size: 1.5rem;
   .gameButton {
+    /* position: -webkit-sticky; */
+    /* position: sticky; */
+    /* top: 0; */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-family: "Pixelify Sans", sans-serif;
     background-color: gray;
   }
   .gameButton:hover {

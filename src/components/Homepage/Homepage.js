@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
 
 export default function Homepage() {
-  document.body.style.margin = 0;
+  //   document.body.style.margin = 0;
+  let navigate = useNavigate();
   const handleNewGameClick = (e) => {
-    //do things
+    navigate(`game`);
   };
   const handleLoadGameClick = (e) => {
     //do things
