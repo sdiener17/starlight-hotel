@@ -19,7 +19,11 @@ export default function App() {
           {/* <NavBar /> */}
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <Routes>
-            <Route exact path="/" element={<Homepage />} />
+            <Route
+              exact
+              path="/"
+              element={<Homepage setGameStarted={setGameStarted} />}
+            />
             <Route path="game" element={<Gamepage />} />
           </Routes>
         </div>

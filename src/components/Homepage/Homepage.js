@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
+import { StatsDispatchContext } from "../../data/GameContext";
 
-export default function Homepage() {
+export default function Homepage({ setGameStarted }) {
   //   document.body.style.margin = 0;
+  //   const dispatch = useContext(StatsDispatchContext);
+  useEffect(() => {
+    setGameStarted(false);
+  }, []);
   let navigate = useNavigate();
   const handleNewGameClick = (e) => {
+    setGameStarted(true);
+    // dispatch({ type: "start_game" });
     navigate(`game`);
   };
   const handleLoadGameClick = (e) => {

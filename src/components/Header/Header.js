@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { StatsContext } from "../../data/GameContext";
 // import NavBar from "./NavBar";
 
 export default function Header({ gameStarted }) {
-  document.body.style.margin = 0;
+  // document.body.style.margin = 0;
+  const statsList = useContext(StatsContext);
+  useEffect(() => {
+    //something
+  }, [gameStarted]);
   //const history = useNavigate();
 
   return (

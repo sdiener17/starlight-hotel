@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
 
-const StatsContext = createContext(null);
-const StatsDispatchContext = createContext(null);
+export const StatsContext = createContext(null);
+export const StatsDispatchContext = createContext(null);
 
 export function DataProvider({ children }) {
   const [stats, dispatch] = useReducer(statsReducer, initialStats);
@@ -25,20 +25,19 @@ export function useStatsDispatch() {
 
 function statsReducer(stats, action) {
   switch (action.type) {
-    case "added": {
+    case "unknownthing": {
       return [
         ...stats,
         {
-          id: action.id,
-          text: action.text,
-          done: false,
+          name: "gameRunning",
+          content: 1,
         },
       ];
     }
-    case "changed": {
+    case "start_game": {
       return stats.map((s) => {
-        if (s.id === action.stat.id) {
-          return action.stat;
+        if (s.name === "gameRunning") {
+          return { name: "gameRunning", content: 1 };
         } else {
           return s;
         }
@@ -54,6 +53,7 @@ function statsReducer(stats, action) {
 }
 
 const initialStats = [
+  { name: "gameRunning", content: 0 },
   { name: "playerTotalLevel", content: 0 },
   { name: "currentEnergy", content: 50 },
   { name: "sortingSpeed", content: 0 },
