@@ -5,10 +5,12 @@ export default function StyledGameButton({
   buttonContent,
   buttonDisabled,
   handleButtonClick,
+  buttonId = -1,
 }) {
   return (
     <PageWrapper>
       <button
+        name={buttonId}
         className="gameButton"
         disabled={buttonDisabled}
         onClick={handleButtonClick}

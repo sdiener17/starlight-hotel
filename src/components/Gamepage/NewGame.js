@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
 import { TypeAnimation } from "react-type-animation";
 import { textRichard } from "../../data/npcInteractions";
+import { playerOptions } from "../../data/playerOptions";
 import FormattedTypeAnimation from "./FormattedTypeAnimation";
+import WhatNext from "./WhatNext";
 
 export default function NewGame({ setCurrentLocation }) {
   const [mostRecentTextPlayed, setMostRecentTextPlayed] = useState(0);
-  const handleButton1Click = (e) => {
+  //   const [chosenOption1, setChosenOption1] = useState(0);
+
+  function handleOptionSelect(selectedId) {
     setMostRecentTextPlayed(2.5);
     // setCurrentLocation("laundry");
-  };
+  }
   return (
     <PageWrapper>
       <FormattedTypeAnimation
@@ -29,12 +33,9 @@ export default function NewGame({ setCurrentLocation }) {
         />
       )}
       {mostRecentTextPlayed >= 2 && (
-        <StyledGameButton
-          buttonContent={"That's a lot of laundry"}
-          buttonDisabled={false}
-          handleButtonClick={() => {
-            setMostRecentTextPlayed(2.5);
-          }}
+        <WhatNext
+          options={playerOptions.gameStartOptions.scene1}
+          handleOptionSelect={handleOptionSelect}
         />
       )}
       {mostRecentTextPlayed >= 2.5 && (
@@ -43,6 +44,13 @@ export default function NewGame({ setCurrentLocation }) {
           delay={2000}
           setValuePostDisplay={setMostRecentTextPlayed}
           newValue={3}
+        />
+      )}
+      {mostRecentTextPlayed >= 3 && (
+        <StyledGameButton
+          buttonContent={"Head to the Laundry Room"}
+          buttonDisabled={false}
+          handleButtonClick={() => setCurrentLocation("laundry")}
         />
       )}
     </PageWrapper>

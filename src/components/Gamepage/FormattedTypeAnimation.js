@@ -8,6 +8,7 @@ export default function FormattedTypeAnimation({
   setValuePostDisplay,
   newValue,
 }) {
+  //TODO: change speed back to 40ish
   return (
     <TypeAnimation
       sequence={[
@@ -19,7 +20,7 @@ export default function FormattedTypeAnimation({
       ]}
       cursor={false}
       omitDeletionAnimation={true}
-      speed={40}
+      speed={90}
       style={{ whiteSpace: "pre-line", fontSize: "1.5rem" }}
     />
   );

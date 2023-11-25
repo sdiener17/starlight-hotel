@@ -7,15 +7,18 @@ import { StatsDispatchContext } from "../../data/GameContext";
 export default function Homepage({ setGameStarted }) {
   //   document.body.style.margin = 0;
   //   const dispatch = useContext(StatsDispatchContext);
+  //Sets the game status to not started so the proper header is displayed
   useEffect(() => {
     setGameStarted(false);
   }, []);
   let navigate = useNavigate();
+  //Event handler for starting a new game
   const handleNewGameClick = (e) => {
     setGameStarted(true);
     // dispatch({ type: "start_game" });
     navigate(`game`);
   };
+  //Event handler for loading a game from a save file
   const handleLoadGameClick = (e) => {
     //do things
   };
