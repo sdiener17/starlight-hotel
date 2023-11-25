@@ -4,15 +4,19 @@ import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
 import LaundryRoom from "./LaundryRoom";
 import WhereTo from "./WhereTo";
+import NewGame from "./NewGame";
 
 export default function Gamepage() {
-  const [currentLocation, setCurrentLocation] = useState("laundry");
+  const [currentLocation, setCurrentLocation] = useState("gamestart");
 
   useEffect(() => {
     //things
   }, [currentLocation]);
   return (
     <PageWrapper>
+      {currentLocation === "gamestart" && (
+        <NewGame setCurrentLocation={setCurrentLocation} />
+      )}
       {currentLocation === "laundry" && (
         <LaundryRoom setCurrentLocation={setCurrentLocation} />
       )}
