@@ -1,3 +1,13 @@
+/* Written by: Sarah Diener (sdiener17)
+ * Created: 11/24/23
+ * Description: Defines a common button style used throughout the game.
+ * Input:
+ * - buttonContent: The text to be displayed on the button.
+ * - buttonDisabled: true/false if the button should be disabled or not.
+ * - handleButtonClick: The event handler for when the button is clicked (method defined in parent component).
+ * - buttonId: Optional id for the button used as the 'name' attribute. Used in some components to identify the correct button clicked.
+ * Used By: LaundryRoom, NewGame, WhatNext, WhereTo
+ */
 import React from "react";
 import styled from "styled-components";
 

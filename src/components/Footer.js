@@ -1,3 +1,7 @@
+/* Written by: Sarah Diener (sdiener17)
+ * Created: 11/19/23
+ * Description: Footer component for the game.
+ */
 import React from "react";
 import ReactAudioPlayer from "react-audio-player";
 import styled from "styled-components";

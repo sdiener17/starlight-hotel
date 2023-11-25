@@ -1,4 +1,14 @@
-// import React, { useEffect } from "react";
+/* Written by: Sarah Diener (sdiener17)
+ * Created: 11/24/23
+ * Description: Used by other components to show options for the player to choose from, such as choosing a response
+ * in dialog.
+ * Input:
+ * - options: The list of options for the player to choose from.
+ * - handleOptionSelect: the method in the parent component that will dictate what to do once an option has been selected.
+ * The option id of the option chosen is passed into this method.
+ * Used By: NewGame
+ */
+import React from "react";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
 
@@ -8,6 +18,7 @@ export default function WhatNext({ options, handleOptionSelect }) {
   //       console.log("TEXT: " + option.text);
   //     });
   //   }, []);
+  //Calls the parent's event handler for a button press, passing in the id of the button selected
   const generalHandler = (e) => {
     // setChosenOption(e.target.buttonId);
     // console.log(e.target);

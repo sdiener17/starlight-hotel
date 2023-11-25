@@ -1,3 +1,9 @@
+/* Written by: Sarah Diener (sdiener17)
+ * Created: 11/19/23
+ * Description: Header component for the game.
+ * Input:
+ * - gameStarted: true/false, indicates if the game is running or not, which determines the type of header shown.
+ */
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";

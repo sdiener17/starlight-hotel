@@ -1,3 +1,8 @@
+/* Written by: Sarah Diener (sdiener17)
+ * Created: 11/24/23
+ * Description: Main game interface. Holds components for all parts of the game and switches between them based on user
+ * input.
+ */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -7,6 +12,7 @@ import WhereTo from "./WhereTo";
 import NewGame from "./NewGame";
 
 export default function Gamepage() {
+  //Used to store the currently location the player is at. This allows the correct component to be showed.
   const [currentLocation, setCurrentLocation] = useState("gamestart");
 
   useEffect(() => {

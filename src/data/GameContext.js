@@ -1,3 +1,7 @@
+/* Written by: Sarah Diener (sdiener17)
+ * Created: 11/19/23
+ * Description: Context and reducer for the game.
+ */
 import { createContext, useContext, useReducer } from "react";
 
 export const StatsContext = createContext(null);

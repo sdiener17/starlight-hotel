@@ -1,3 +1,11 @@
+/* Written by: Sarah Diener (sdiener17)
+ * Created: 11/24/23
+ * Description: Displays a screen for the player to choose the location they would like to travel to in-game.
+ * Input:
+ * - setCurrentLocation: passed in from the main game page to allow this component to move the player to their desired
+ * location.
+ * Used By: LaundryRoom
+ */
 import React from "react";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";

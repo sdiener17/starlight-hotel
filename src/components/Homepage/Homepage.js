@@ -1,3 +1,10 @@
+/* Written by: Sarah Diener (sdiener17)
+ * Created: 11/19/23
+ * Description: Landing page for the game. Displays options to start a new game or load a previous session from a save file.
+ * Input:
+ * - setGameStarted: Passed from App.js, used to tell if the game is started or not so the header can display
+ * the correct information.
+ */
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";

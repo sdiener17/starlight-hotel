@@ -1,7 +1,14 @@
+/* Written by: Sarah Diener (sdiener17)
+ * Created: 11/24/23
+ * Description: Shows the starting screen of the game. Goes through all the initial dialog and explanation before letting the player
+ * head to the laundry room to start playing.
+ * Input:
+ * - setCurrentLocation: passed in from the main game page to allow this component to move the player to the laundry room after
+ * the starting scene is finished.
+ */
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
-import { TypeAnimation } from "react-type-animation";
 import { textRichard } from "../../data/npcInteractions";
 import { playerOptions } from "../../data/playerOptions";
 import FormattedTypeAnimation from "./FormattedTypeAnimation";
