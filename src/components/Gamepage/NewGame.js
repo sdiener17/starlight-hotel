@@ -13,7 +13,7 @@ import { textRichard } from "../../data/npcInteractions";
 import { playerOptions } from "../../data/playerOptions";
 import FormattedTypeAnimation from "./FormattedTypeAnimation";
 import WhatNext from "./WhatNext";
-import { Richard } from "../sprites/Characters";
+import { Richard, MaterialGirl } from "../sprites/Characters";
 
 export default function NewGame({ setCurrentLocation }) {
   const [mostRecentTextPlayed, setMostRecentTextPlayed] = useState(0);
@@ -65,7 +65,7 @@ export default function NewGame({ setCurrentLocation }) {
       )}
       {showPlayerChoice1 && (
         <div className="npcText">
-          <Richard className="sprite-1" />
+          <MaterialGirl className="sprite-1" />
           <FormattedTypeAnimation
             text={choice1Text}
             delay={2000}

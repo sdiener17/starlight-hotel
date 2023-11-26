@@ -6,11 +6,25 @@
  * the starting scene is finished.
  * Used By: Gamepage
  */
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
+import { useStats, useStatsDispatch } from "../../data/GameContext.js";
 
 export default function LaundryRoom({ setCurrentLocation }) {
+  const stats = useStats();
+
+  const [disabledBWork, setDisabledBWork] = useState(
+    viewStat("tutorialStage") >= 1 ? false : true
+  );
+  const [disabledBTalk, setDisabledBTalk] = useState(false);
+  const [disabledBExploreOther, setDisabledExploreOther] = useState(
+    viewStat("tutorialStage") >= 1 ? false : true
+  );
+  const [disabledBExploreHere, setDisabledExploreHere] = useState(
+    viewStat("tutorialStage") >= 1 ? false : true
+  );
+
   const handleWorkButtonClick = (e) => {
     //do things
   };
@@ -23,28 +37,38 @@ export default function LaundryRoom({ setCurrentLocation }) {
   const handleExploreOtherClick = (e) => {
     setCurrentLocation("whereTo");
   };
+
+  //Function to retrieve a specific stat
+  function viewStat(statName) {
+    stats.map((s) => {
+      if (s.name === statName) {
+        return s.content;
+      }
+    });
+    return -1;
+  } //end viewStat
   return (
     <PageWrapper>
       <h2>Laundry Room</h2>
       <div>What would you like to do?</div>
       <StyledGameButton
         buttonContent={"Work"}
-        buttonDisabled={false}
+        buttonDisabled={disabledBWork}
         handleButtonClick={handleWorkButtonClick}
       />
       <StyledGameButton
         buttonContent={"Talk to a Coworker"}
-        buttonDisabled={false}
+        buttonDisabled={disabledBTalk}
         handleButtonClick={handleTalkButtonClick}
       />
       <StyledGameButton
         buttonContent={"Explore this Area"}
-        buttonDisabled={false}
+        buttonDisabled={disabledBExploreHere}
         handleButtonClick={handleExploreHereButtonClick}
       />
       <StyledGameButton
         buttonContent={"Explore another Area"}
-        buttonDisabled={false}
+        buttonDisabled={disabledBExploreOther}
         handleButtonClick={handleExploreOtherClick}
       />
     </PageWrapper>

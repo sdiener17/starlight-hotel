@@ -29,14 +29,14 @@ export function useStatsDispatch() {
 
 function statsReducer(stats, action) {
   switch (action.type) {
-    case "unknownthing": {
-      return [
-        ...stats,
-        {
-          name: "gameRunning",
-          content: 1,
-        },
-      ];
+    case "increment_tutorial_stage": {
+      return stats.map((s) => {
+        if (s.name === "tutorialStage") {
+          return { name: "tutorialStage", content: s.content + 1 };
+        } else {
+          return s;
+        }
+      });
     }
     case "start_game": {
       return stats.map((s) => {
@@ -119,4 +119,5 @@ const initialStats = [
   { name: "totalLargeTowelsFolded", content: 0 },
   { name: "totalSmallTowelsFolded", content: 0 },
   { name: "totalOrdersFilled", content: 0 },
+  { name: "tutorialStage", content: 0 },
 ];

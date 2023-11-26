@@ -29,7 +29,6 @@ export default function Gamepage() {
       {currentLocation === "whereTo" && (
         <WhereTo setCurrentLocation={setCurrentLocation} />
       )}
-      <div className="pageMain">Game has started</div>
     </PageWrapper>
   );
 }

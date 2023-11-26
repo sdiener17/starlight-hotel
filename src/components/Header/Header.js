@@ -28,7 +28,7 @@ export default function Header({ gameStarted }) {
           {/* <NavBar /> */}
         </div>
       ) : (
-        <div className="headerMain">Game has not started header</div>
+        <h1 className="headerMain">The Starlight Hotel</h1>
       )}
     </PageWrapper>
   );
@@ -39,13 +39,11 @@ const PageWrapper = styled.nav`
   position: sticky;
   top: 0;
   padding: 1rem 1.5rem;
-  background: linear-gradient(
-    to bottom right,
-    var(--primarySiteColor),
-    var(--darkSiteColor)
-  );
-  border-bottom: 5px solid var(--mediumGrey);
+  background: var(--primarySiteColor);
+  border-bottom: 5px solid var(--secondarySiteColor);
   z-index: 999;
+  font-family: "Helvetica Neue";
+  font-size: 1.5rem;
   /* width: 100%; */
   margin: 0;
   .headerMain {
