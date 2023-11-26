@@ -11,12 +11,13 @@
  */
 import React from "react";
 import styled from "styled-components";
+import Sprite from "./Sprite";
 
-export default function NPCCard({ image, name, location, isAvailable }) {
+export default function NPCCard({ imageId, name, location, isAvailable }) {
   return (
     <PageWrapper>
       <div clasName={isAvailable ? "available" : "unavailable"}>
-        {image}
+        <Sprite npcId={imageId} />
         <h3>{name}</h3>
         <div>{location}</div>
       </div>

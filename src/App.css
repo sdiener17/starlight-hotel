@@ -35,3 +35,18 @@ body,
   padding: 0px !important;
   height: 100% !important;
 }
+
+
+.gameButton {
+  /* position: -webkit-sticky; */
+  /* position: sticky; */
+  /* top: 0; */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-family: "Pixelify Sans", sans-serif;
+  background-color: var(--buttonOne);
+}
+.gameButton:hover {
+  background-color: var(--buttonOneHover);
+}

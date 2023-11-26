@@ -9,52 +9,82 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
-import { useStats, useStatsDispatch } from "../../data/GameContext.js";
-import { useDispatch } from "react-redux";
+// import { useStats, useStatsDispatch } from "../../data/GameContext.js";
+import { useDispatch, useSelector } from "react-redux";
 import { updateLocation } from "../../data/playerSlice.js";
+import {
+  selectAvailableOptionEnumDataById,
+  selectLocationById,
+} from "../../data/locationSlice.js";
 
 export default function LaundryRoom() {
+  const laundry = useSelector((state) => {
+    return state.locations.find((loc) => Number(loc.locationId) === 0);
+  });
   const dispatch = useDispatch();
-  const stats = useStats();
+  // const stats = useStats();
 
-  const [disabledBWork, setDisabledBWork] = useState(
-    viewStat("tutorialStage") >= 1 ? false : true
-  );
-  const [disabledBTalk, setDisabledBTalk] = useState(false);
-  const [disabledBExploreOther, setDisabledExploreOther] = useState(
-    viewStat("tutorialStage") >= 1 ? false : true
-  );
-  const [disabledBExploreHere, setDisabledExploreHere] = useState(
-    viewStat("tutorialStage") >= 1 ? false : true
-  );
+  // const [disabledBWork, setDisabledBWork] = useState(
+  //   viewStat("tutorialStage") >= 1 ? false : true
+  // );
+  // const [disabledBTalk, setDisabledBTalk] = useState(false);
+  // const [disabledBExploreOther, setDisabledExploreOther] = useState(
+  //   viewStat("tutorialStage") >= 1 ? false : true
+  // );
+  // const [disabledBExploreHere, setDisabledExploreHere] = useState(
+  //   viewStat("tutorialStage") >= 1 ? false : true
+  // );
 
-  const handleWorkButtonClick = (e) => {
-    //do things
-  };
-  const handleTalkButtonClick = (e) => {
-    dispatch(updateLocation("talkTo"));
-  };
-  const handleExploreHereButtonClick = (e) => {
-    //do things
-  };
-  const handleExploreOtherClick = (e) => {
-    dispatch(updateLocation("whereTo"));
-  };
+  // const handleWorkButtonClick = (e) => {
+  //   //do things
+  // };
+  // const handleTalkButtonClick = (e) => {
+  //   dispatch(updateLocation("talkTo"));
+  // };
+  // const handleExploreHereButtonClick = (e) => {
+  //   //do things
+  // };
+  // const handleExploreOtherClick = (e) => {
+  //   dispatch(updateLocation("whereTo"));
+  // };
 
   //Function to retrieve a specific stat
-  function viewStat(statName) {
-    stats.map((s) => {
-      if (s.name === statName) {
-        return s.content;
-      }
-    });
-    return -1;
-  } //end viewStat
+  // function viewStat(statName) {
+  //   stats.map((s) => {
+  //     if (s.name === statName) {
+  //       return s.content;
+  //     }
+  //   });
+  //   return -1;
+  // } //end viewStat
+  const renderOptions =
+    laundry != undefined ? (
+      laundry.availableOptions.map((option, idx) => {
+        return (
+          <button
+            name={option.name}
+            className="gameButton"
+            disabled={option.currentlyDisabled}
+            key={idx}
+            onClick={(e) =>
+              dispatch(updateLocation(option.locationTextIdentifier))
+            }
+          >
+            {option.name}
+          </button>
+        );
+      })
+    ) : (
+      <div>Error</div>
+    );
+
   return (
     <PageWrapper>
       <h2>Laundry Room</h2>
       <div>What would you like to do?</div>
-      <StyledGameButton
+      {/* {laundry.locationName} */}
+      {renderOptions}
+      {/* <StyledGameButton
         buttonContent={"Work"}
         buttonDisabled={disabledBWork}
         handleButtonClick={handleWorkButtonClick}
@@ -73,7 +103,7 @@ export default function LaundryRoom() {
         buttonContent={"Explore another Area"}
         buttonDisabled={disabledBExploreOther}
         handleButtonClick={handleExploreOtherClick}
-      />
+      /> */}
     </PageWrapper>
   );
 }

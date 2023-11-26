@@ -1,3 +1,3 @@
 export const playerData = {
-  currentLocation: "gameStart",
+  currentLocation: "laundry",
 };

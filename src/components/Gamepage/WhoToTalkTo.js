@@ -82,7 +82,7 @@ export default function WhoToTalkTo() {
         name={npc.npcName}
         location={npc.npcJob}
         available={npc.npcIsAvailable}
-        image={npc.npcSpriteLocation}
+        imageId={npc.npcId}
       />
     );
   });
@@ -97,12 +97,6 @@ export default function WhoToTalkTo() {
           name={personRichard.n}
           location={personRichard.location}
           available={personRichard.available}
-        />
-        <NPCCard
-          image={<Darla />}
-          name={personDarla.n}
-          location={personDarla.location}
-          available={personDarla.available}
         />
       </div>
     </PageWrapper>
