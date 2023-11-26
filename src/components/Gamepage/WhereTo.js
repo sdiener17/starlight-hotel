@@ -9,14 +9,17 @@
 import React from "react";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
+import { useDispatch } from "react-redux";
+import { updateLocation } from "../../data/playerSlice";
 
-export default function WhereTo({ setCurrentLocation }) {
+export default function WhereTo() {
+  const dispatch = useDispatch();
   const handleLaundryClick = (e) => {
-    setCurrentLocation("laundry");
+    dispatch(updateLocation("laundry"));
   };
   const handleLaundryOfficeClick = (e) => {
     //TODO: Change to laundryOffice
-    setCurrentLocation("laundry");
+    dispatch(updateLocation("laundry"));
   };
   return (
     <PageWrapper>

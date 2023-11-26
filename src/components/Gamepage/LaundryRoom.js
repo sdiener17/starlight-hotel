@@ -10,8 +10,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
 import { useStats, useStatsDispatch } from "../../data/GameContext.js";
+import { useDispatch } from "react-redux";
+import { updateLocation } from "../../data/playerSlice.js";
 
-export default function LaundryRoom({ setCurrentLocation }) {
+export default function LaundryRoom() {
+  const dispatch = useDispatch();
   const stats = useStats();
 
   const [disabledBWork, setDisabledBWork] = useState(
@@ -29,13 +32,13 @@ export default function LaundryRoom({ setCurrentLocation }) {
     //do things
   };
   const handleTalkButtonClick = (e) => {
-    setCurrentLocation("talkTo");
+    dispatch(updateLocation("talkTo"));
   };
   const handleExploreHereButtonClick = (e) => {
     //do things
   };
   const handleExploreOtherClick = (e) => {
-    setCurrentLocation("whereTo");
+    dispatch(updateLocation("whereTo"));
   };
 
   //Function to retrieve a specific stat

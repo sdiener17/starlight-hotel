@@ -3,6 +3,9 @@ import richardStanding from "../../images/richardStanding1.png";
 import MaterialGirl1 from "../../images/materialGirlStanding1.png";
 import DarlaStanding from "../../images/darlaStanding1.png";
 import styled, { keyframes } from "styled-components";
+
+//Animation code adapted from 'React Animations With CSS (styled-components) and Sprite Sheets' by Mark Lisanti
+
 const animation = keyframes`
   100% { background-position: -1408px; }
 `;

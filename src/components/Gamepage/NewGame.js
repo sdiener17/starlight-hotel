@@ -8,6 +8,8 @@
  */
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { updateLocation } from "../../data/playerSlice";
 import StyledGameButton from "../StyledGameButton";
 import { textRichard } from "../../data/npcInteractions";
 import { playerOptions } from "../../data/playerOptions";
@@ -15,7 +17,8 @@ import FormattedTypeAnimation from "./FormattedTypeAnimation";
 import WhatNext from "./WhatNext";
 import { Richard, MaterialGirl } from "../sprites/Characters";
 
-export default function NewGame({ setCurrentLocation }) {
+export default function NewGame({}) {
+  const dispatch = useDispatch();
   const [mostRecentTextPlayed, setMostRecentTextPlayed] = useState(0);
   const [showPlayerChoice1, setShowPlayerChoice1] = useState(false);
   const [choice1Text, setChoice1Text] = useState("");
@@ -90,7 +93,7 @@ export default function NewGame({ setCurrentLocation }) {
           <StyledGameButton
             buttonContent={"Head to the Laundry Room"}
             buttonDisabled={false}
-            handleButtonClick={() => setCurrentLocation("laundry")}
+            handleButtonClick={() => dispatch(updateLocation("laundry"))}
           />
         </div>
       )}

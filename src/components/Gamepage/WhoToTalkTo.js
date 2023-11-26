@@ -8,17 +8,17 @@ import { useStats } from "../../data/GameContext";
 import styled from "styled-components";
 import NPCCard from "./NPCCard";
 import { Richard, Darla } from "../sprites/Characters";
+import { useDispatch, useSelector } from "react-redux";
+import { updateLocation } from "../../data/playerSlice";
+import { selectNpcFromId } from "../../data/npcSlice";
 
-export default function WhoToTalkTo({ setCurrentLocation }) {
+export default function WhoToTalkTo() {
+  const dispatch = useDispatch();
+  const npcList = useSelector((state) => state.npcList);
   const stats = useStats();
   const personRichard = { n: "Richard", location: "", available: false };
   const personDarla = { n: "Darla", location: "", available: false };
   const personLinenLady = { n: "Linen Lady", location: "", available: false };
-  const personEve = { n: "Eve", location: "", available: false };
-  const personFranc = { n: "Franc", location: "", available: false };
-  const personLenora = { n: "Lenora", location: "", available: false };
-  const personMaria = { n: "Maria", location: "", available: false };
-  const personBernard = { n: "Bernard", location: "", available: false };
 
   function viewStat(statName) {
     stats.map((s) => {
@@ -76,10 +76,22 @@ export default function WhoToTalkTo({ setCurrentLocation }) {
     }
   }, []);
 
+  const renderedNPCCards = npcList.map((npc) => {
+    return (
+      <NPCCard
+        name={npc.npcName}
+        location={npc.npcJob}
+        available={npc.npcIsAvailable}
+        image={npc.npcSpriteLocation}
+      />
+    );
+  });
+
   return (
     <PageWrapper>
       <h2>Who would you like to talk to?</h2>
       <div className="peopleWrapper">
+        {renderedNPCCards}
         <NPCCard
           image={<Richard />}
           name={personRichard.n}
