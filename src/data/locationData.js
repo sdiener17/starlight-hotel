@@ -20,7 +20,7 @@ export const locationData = [
       },
       {
         availableOptionId: 2,
-        locationTextIdentifier: "exploreHere_laundry",
+        locationTextIdentifier: "explore_laundry",
         name: "Explore This Area",
         currentlyDisabled: false,
       },

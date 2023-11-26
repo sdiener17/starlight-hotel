@@ -7,7 +7,7 @@ export const exploreSlice = createSlice({
   reducers: {
     updatePlayerHasOpened: (state, action) => {
       const location = state.find(
-        (ex) => ex.loactionId === action.payload.parentLocationId
+        (ex) => ex.locationId === action.payload.parentLocationId
       );
       location.data.map((discovery) => {
         if (discovery.id === action.payload.discoveryId) {

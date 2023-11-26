@@ -13,6 +13,7 @@ export const exploreData = [
       {
         id: 1,
         type: "task",
+        playerHasOpened: false,
         currentlyShowing: true,
         text: "",
         triggersEvent: "none",

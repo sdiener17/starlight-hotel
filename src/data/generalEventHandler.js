@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { updateSubAreaAvailable } from "./locationSlice";
 
-export default function handleEvent(eventName) {
+export function useExploreEvent(eventName) {
   const dispatch = useDispatch();
 
   if (eventName === "found_darla") {
@@ -12,5 +12,5 @@ export default function handleEvent(eventName) {
         setValueTo: false,
       })
     );
-  }
+  } //end found_darla
 }
