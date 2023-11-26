@@ -17,10 +17,18 @@ import { Richard } from "../sprites/Characters";
 
 export default function NewGame({ setCurrentLocation }) {
   const [mostRecentTextPlayed, setMostRecentTextPlayed] = useState(0);
+  const [showPlayerChoice1, setShowPlayerChoice1] = useState(false);
+  const [choice1Text, setChoice1Text] = useState("");
   //   const [chosenOption1, setChosenOption1] = useState(0);
 
   function handleOptionSelect(selectedId) {
-    setMostRecentTextPlayed(2.5);
+    // setMostRecentTextPlayed(2.5);
+    playerOptions.gameStartOptions.scene1.map((option) => {
+      if (option.id.toString() === selectedId.toString()) {
+        setChoice1Text(option.text);
+      }
+    });
+    setShowPlayerChoice1(true);
     // setCurrentLocation("laundry");
   }
   return (
@@ -47,10 +55,23 @@ export default function NewGame({ setCurrentLocation }) {
         </div>
       )}
       {mostRecentTextPlayed >= 2 && (
-        <WhatNext
-          options={playerOptions.gameStartOptions.scene1}
-          handleOptionSelect={handleOptionSelect}
-        />
+        <div className="selectionBox">
+          <WhatNext
+            options={playerOptions.gameStartOptions.scene1}
+            handleOptionSelect={handleOptionSelect}
+          />
+        </div>
+      )}
+      {showPlayerChoice1 && (
+        <div className="npcText">
+          <Richard className="sprite-1" />
+          <FormattedTypeAnimation
+            text={choice1Text}
+            delay={2000}
+            setValuePostDisplay={setMostRecentTextPlayed}
+            newValue={2.5}
+          />
+        </div>
       )}
       {mostRecentTextPlayed >= 2.5 && (
         <div className="npcText">
@@ -64,11 +85,13 @@ export default function NewGame({ setCurrentLocation }) {
         </div>
       )}
       {mostRecentTextPlayed >= 3 && (
-        <StyledGameButton
-          buttonContent={"Head to the Laundry Room"}
-          buttonDisabled={false}
-          handleButtonClick={() => setCurrentLocation("laundry")}
-        />
+        <div className="selectionBox">
+          <StyledGameButton
+            buttonContent={"Head to the Laundry Room"}
+            buttonDisabled={false}
+            handleButtonClick={() => setCurrentLocation("laundry")}
+          />
+        </div>
       )}
     </PageWrapper>
   );
@@ -90,5 +113,8 @@ const PageWrapper = styled.div`
   }
   .sprite-1 {
     padding: 5px;
+  }
+  .selectionBox {
+    padding: 10px;
   }
 `;

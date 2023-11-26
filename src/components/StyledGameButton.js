@@ -40,9 +40,9 @@ const PageWrapper = styled.div`
     border-radius: 5px;
     font-size: 1.2rem;
     font-family: "Pixelify Sans", sans-serif;
-    background-color: gray;
+    background-color: var(--buttonOne);
   }
   .gameButton:hover {
-    background-color: red;
+    background-color: var(--buttonOneHover);
   }
 `;
