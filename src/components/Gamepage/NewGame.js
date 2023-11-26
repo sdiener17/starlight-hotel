@@ -6,7 +6,7 @@
  * - setCurrentLocation: passed in from the main game page to allow this component to move the player to the laundry room after
  * the starting scene is finished.
  */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
 import { textRichard } from "../../data/npcInteractions";
@@ -19,17 +19,18 @@ export default function NewGame({ setCurrentLocation }) {
   const [mostRecentTextPlayed, setMostRecentTextPlayed] = useState(0);
   const [showPlayerChoice1, setShowPlayerChoice1] = useState(false);
   const [choice1Text, setChoice1Text] = useState("");
-  //   const [chosenOption1, setChosenOption1] = useState(0);
+  const scrollSpan = useRef();
+  useEffect(() => {
+    scrollSpan.current.scrollIntoView({ behavior: "smooth" });
+  }, [mostRecentTextPlayed, showPlayerChoice1]);
 
   function handleOptionSelect(selectedId) {
-    // setMostRecentTextPlayed(2.5);
     playerOptions.gameStartOptions.scene1.map((option) => {
       if (option.id.toString() === selectedId.toString()) {
         setChoice1Text(option.text);
       }
     });
     setShowPlayerChoice1(true);
-    // setCurrentLocation("laundry");
   }
   return (
     <PageWrapper>
@@ -93,6 +94,7 @@ export default function NewGame({ setCurrentLocation }) {
           />
         </div>
       )}
+      <span ref={scrollSpan} />
     </PageWrapper>
   );
 }
