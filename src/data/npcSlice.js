@@ -32,6 +32,10 @@ export function selectNpcFromId(state, id) {
   return state.filter((npc) => npc.npcId === id);
 }
 
+export function selectNpcCurrentTextSet(state, id) {
+  //do something
+}
+
 // Action creators are generated for each case reducer function
 export const { updateNpcAvailable, updateNpcIsKnown } = npcSlice.actions;
 

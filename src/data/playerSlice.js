@@ -3,7 +3,7 @@ import { playerData } from "./playerData";
 
 export const playerSlice = createSlice({
   name: "playerData",
-  initialState: { playerData },
+  initialState: playerData,
   reducers: {
     updateLocation: (state, action) => {
       state.currentLocation = action.payload;

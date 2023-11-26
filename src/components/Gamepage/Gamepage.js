@@ -4,7 +4,6 @@
  * input.
  */
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { updateLocation } from "../../data/playerSlice";
 import styled from "styled-components";
@@ -20,14 +19,17 @@ export default function Gamepage() {
   const currentLocation = useSelector(
     (state) => state.playerData.currentLocation
   );
+  const allPlayerData = useSelector((state) => state.playerData);
+
   // const dispatch = useDispatch();
 
-  useEffect(() => {
-    //things
-  }, [currentLocation]);
+  // useEffect(() => {
+  //   console.log("CURRENT LOCATION: " + currentLocation);
+  //   console.log("ALL PLAYER DATA: " + allPlayerData);
+  // }, []);
   return (
     <PageWrapper>
-      {currentLocation === "gamestart" && <NewGame />}
+      {currentLocation === "gameStart" && <NewGame />}
       {currentLocation === "laundry" && <LaundryRoom />}
       {currentLocation === "whereTo" && <WhereTo />}
       {currentLocation === "talkTo" && <WhoToTalkTo />}
