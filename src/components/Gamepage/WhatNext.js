@@ -8,22 +8,23 @@
  * The option id of the option chosen is passed into this method.
  * Used By: NewGame
  */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
 
 export default function WhatNext({ options, handleOptionSelect }) {
-  //   useEffect(() => {
-  //     options.map((option) => {
-  //       console.log("TEXT: " + option.text);
-  //     });
-  //   }, []);
+  const [isDisabled, setIsDisabled] = useState(false);
+  useEffect(() => {
+    //things
+  }, [isDisabled]);
+
   //Calls the parent's event handler for a button press, passing in the id of the button selected
   const generalHandler = (e) => {
     // setChosenOption(e.target.buttonId);
     // console.log(e.target);
     // console.log("\nNAME********\n");
     // console.log(e.target.name);
+    setIsDisabled(true);
     handleOptionSelect(e.target.name);
   };
   return (
@@ -36,7 +37,7 @@ export default function WhatNext({ options, handleOptionSelect }) {
               <StyledGameButton
                 key={idx}
                 buttonContent={option.text}
-                buttonDisabled={false}
+                buttonDisabled={isDisabled}
                 handleButtonClick={(e) => generalHandler(e)}
                 buttonId={option.id}
               />
