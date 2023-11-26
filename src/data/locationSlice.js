@@ -18,6 +18,19 @@ export const locationSlice = createSlice({
         }
       });
     },
+    updateSubAreaAvailable: (state, action) => {
+      const location = state.find(
+        (loc) =>
+          Number(loc.locationId) === Number(action.payload.parentLocationId)
+      );
+      if (location != undefined) {
+        location.availableOptions.map((option) => {
+          if (option.availableOptionId === action.payload.optionId) {
+            option.currentlyDisabled = action.payload.setValueTo;
+          }
+        });
+      }
+    },
   },
 });
 
@@ -41,6 +54,7 @@ export function selectLocationById(locations, id) {
 // }
 
 // Action creators are generated for each case reducer function
-export const { updateIsUnlocked } = locationSlice.actions;
+export const { updateIsUnlocked, updateSubAreaAvailable } =
+  locationSlice.actions;
 
 export default locationSlice.reducer;

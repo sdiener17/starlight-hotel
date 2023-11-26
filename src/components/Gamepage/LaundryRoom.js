@@ -9,7 +9,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import StyledGameButton from "../StyledGameButton";
-// import { useStats, useStatsDispatch } from "../../data/GameContext.js";
 import { useDispatch, useSelector } from "react-redux";
 import { updateLocation } from "../../data/playerSlice.js";
 import {
@@ -22,48 +21,14 @@ export default function LaundryRoom() {
     return state.locations.find((loc) => Number(loc.locationId) === 0);
   });
   const dispatch = useDispatch();
-  // const stats = useStats();
 
-  // const [disabledBWork, setDisabledBWork] = useState(
-  //   viewStat("tutorialStage") >= 1 ? false : true
-  // );
-  // const [disabledBTalk, setDisabledBTalk] = useState(false);
-  // const [disabledBExploreOther, setDisabledExploreOther] = useState(
-  //   viewStat("tutorialStage") >= 1 ? false : true
-  // );
-  // const [disabledBExploreHere, setDisabledExploreHere] = useState(
-  //   viewStat("tutorialStage") >= 1 ? false : true
-  // );
-
-  // const handleWorkButtonClick = (e) => {
-  //   //do things
-  // };
-  // const handleTalkButtonClick = (e) => {
-  //   dispatch(updateLocation("talkTo"));
-  // };
-  // const handleExploreHereButtonClick = (e) => {
-  //   //do things
-  // };
-  // const handleExploreOtherClick = (e) => {
-  //   dispatch(updateLocation("whereTo"));
-  // };
-
-  //Function to retrieve a specific stat
-  // function viewStat(statName) {
-  //   stats.map((s) => {
-  //     if (s.name === statName) {
-  //       return s.content;
-  //     }
-  //   });
-  //   return -1;
-  // } //end viewStat
   const renderOptions =
     laundry != undefined ? (
       laundry.availableOptions.map((option, idx) => {
         return (
           <button
             name={option.name}
-            className="gameButton"
+            className="gameButton optionButton"
             disabled={option.currentlyDisabled}
             key={idx}
             onClick={(e) =>
@@ -83,27 +48,7 @@ export default function LaundryRoom() {
       <h2>Laundry Room</h2>
       <div>What would you like to do?</div>
       {/* {laundry.locationName} */}
-      {renderOptions}
-      {/* <StyledGameButton
-        buttonContent={"Work"}
-        buttonDisabled={disabledBWork}
-        handleButtonClick={handleWorkButtonClick}
-      />
-      <StyledGameButton
-        buttonContent={"Talk to a Coworker"}
-        buttonDisabled={disabledBTalk}
-        handleButtonClick={handleTalkButtonClick}
-      />
-      <StyledGameButton
-        buttonContent={"Explore this Area"}
-        buttonDisabled={disabledBExploreHere}
-        handleButtonClick={handleExploreHereButtonClick}
-      />
-      <StyledGameButton
-        buttonContent={"Explore another Area"}
-        buttonDisabled={disabledBExploreOther}
-        handleButtonClick={handleExploreOtherClick}
-      /> */}
+      <div className="buttonWrapper">{renderOptions}</div>
     </PageWrapper>
   );
 }
@@ -113,4 +58,11 @@ const PageWrapper = styled.div`
   position: sticky;
   top: 0;
   padding: 1rem 1.5rem;
+  .buttonWrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  .optionButton {
+    margin: 10px;
+  }
 `;
