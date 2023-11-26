@@ -10,6 +10,7 @@ import StyledGameButton from "../StyledGameButton";
 import LaundryRoom from "./LaundryRoom";
 import WhereTo from "./WhereTo";
 import NewGame from "./NewGame";
+import WhoToTalkTo from "./WhoToTalkTo";
 
 export default function Gamepage() {
   //Used to store the currently location the player is at. This allows the correct component to be showed.
@@ -28,6 +29,9 @@ export default function Gamepage() {
       )}
       {currentLocation === "whereTo" && (
         <WhereTo setCurrentLocation={setCurrentLocation} />
+      )}
+      {currentLocation === "talkTo" && (
+        <WhoToTalkTo setCurrentLocation={setCurrentLocation} />
       )}
     </PageWrapper>
   );

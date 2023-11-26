@@ -29,7 +29,7 @@ export default function LaundryRoom({ setCurrentLocation }) {
     //do things
   };
   const handleTalkButtonClick = (e) => {
-    //do things
+    setCurrentLocation("talkTo");
   };
   const handleExploreHereButtonClick = (e) => {
     //do things

@@ -6,6 +6,9 @@ import styled, { keyframes } from "styled-components";
 const animation = keyframes`
   100% { background-position: -1408px; }
 `;
+const animation14 = keyframes`
+  100% {background-position: -1792px;}
+`;
 export const Richard = styled.div`
   /* size: 400%; */
   height: 128px;
@@ -34,5 +37,5 @@ export const Darla = styled.div`
   height: 128px;
   width: 128px;
   background: url(${DarlaStanding}) left center;
-  animation: ${animation} 3s steps(14) infinite;
+  animation: ${animation14} 3s steps(14) infinite;
 `;

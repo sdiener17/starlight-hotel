@@ -28,6 +28,9 @@ const PageWrapper = styled.div`
   top: 0;
   border: 3px solid black;
   border-radius: 2px;
+  width: 20%;
+  margin: 10px;
+  text-align: center;
   .available {
     background-color: gray;
   }

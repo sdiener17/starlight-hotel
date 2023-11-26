@@ -1,14 +1,15 @@
 /* Written by: Sarah Diener (sdiener17)
  * Created: 11/25/23
  * Description: Displays a listing of available npc's for the player to talk to.
- * Used By: LaundryRoom
+ * Used By: Gamepage
  */
 import React, { useEffect } from "react";
 import { useStats } from "../../data/GameContext";
 import styled from "styled-components";
+import NPCCard from "./NPCCard";
 import { Richard, Darla } from "../sprites/Characters";
 
-export default function WhoToTalkTo() {
+export default function WhoToTalkTo({ setCurrentLocation }) {
   const stats = useStats();
   const personRichard = { n: "Richard", location: "", available: false };
   const personDarla = { n: "Darla", location: "", available: false };
@@ -98,4 +99,8 @@ export default function WhoToTalkTo() {
 
 const PageWrapper = styled.div`
   top: 0;
+  .peopleWrapper {
+    display: flex;
+    flex-direction: row;
+  }
 `;
