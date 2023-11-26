@@ -30,4 +30,6 @@ export default function FormattedTypeAnimation({
 
 const PageWrapper = styled.div`
   font-family: "fira sans";
+  height: 60%;
+  width: 60%;
 `;

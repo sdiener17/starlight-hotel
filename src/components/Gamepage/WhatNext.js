@@ -28,18 +28,22 @@ export default function WhatNext({ options, handleOptionSelect }) {
   };
   return (
     <PageWrapper>
-      <h2>What's Next?</h2>
-      {options.map((option, idx) => {
-        return (
-          <StyledGameButton
-            key={idx}
-            buttonContent={option.text}
-            buttonDisabled={false}
-            handleButtonClick={(e) => generalHandler(e)}
-            buttonId={option.id}
-          />
-        );
-      })}
+      <h2 className="head">What's Next?</h2>
+      <div className="optionsWrapper">
+        {options.map((option, idx) => {
+          return (
+            <div className="buttonWrapper">
+              <StyledGameButton
+                key={idx}
+                buttonContent={option.text}
+                buttonDisabled={false}
+                handleButtonClick={(e) => generalHandler(e)}
+                buttonId={option.id}
+              />
+            </div>
+          );
+        })}
+      </div>
     </PageWrapper>
   );
 }
@@ -49,4 +53,16 @@ const PageWrapper = styled.div`
   position: sticky;
   top: 0;
   padding: 1rem 1.5rem;
+  .head {
+    font-family: "Oxygen";
+  }
+  .optionsWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .buttonWrapper {
+    margin: 10px;
+  }
 `;

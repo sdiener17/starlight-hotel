@@ -75,12 +75,12 @@ export default function NewGame({ setCurrentLocation }) {
 }
 
 const PageWrapper = styled.div`
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   padding: 1rem 1.5rem;
   display: flex;
   flex-direction: column;
+  margin-bottom: var(--marginBottom);
   .npcText {
     padding: 10px;
     display: flex;

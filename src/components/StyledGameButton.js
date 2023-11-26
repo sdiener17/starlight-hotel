@@ -31,7 +31,7 @@ export default function StyledGameButton({
   );
 }
 
-const PageWrapper = styled.button`
+const PageWrapper = styled.div`
   .gameButton {
     /* position: -webkit-sticky; */
     /* position: sticky; */
