@@ -1,6 +1,7 @@
 import richard1 from "../../images/richard1.png";
 import richardStanding from "../../images/richardStanding1.png";
 import MaterialGirl1 from "../../images/materialGirlStanding1.png";
+import DarlaStanding from "../../images/darlaStanding1.png";
 import styled, { keyframes } from "styled-components";
 const animation = keyframes`
   100% { background-position: -1408px; }
@@ -27,4 +28,11 @@ export const MaterialGirl = styled.div`
   /* transform: translate(-50%, -50%); */
   background: url(${MaterialGirl1}) left center;
   animation: ${animation} 3s steps(11) infinite;
+`;
+
+export const Darla = styled.div`
+  height: 128px;
+  width: 128px;
+  background: url(${DarlaStanding}) left center;
+  animation: ${animation} 3s steps(14) infinite;
 `;
