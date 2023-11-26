@@ -10,18 +10,24 @@ export default function FormattedTypeAnimation({
 }) {
   //TODO: change speed back to 40ish
   return (
-    <TypeAnimation
-      sequence={[
-        `${text}`,
-        delay,
-        () => {
-          setValuePostDisplay(newValue);
-        },
-      ]}
-      cursor={false}
-      omitDeletionAnimation={true}
-      speed={90}
-      style={{ whiteSpace: "pre-line", fontSize: "1.5rem" }}
-    />
+    <PageWrapper>
+      <TypeAnimation
+        sequence={[
+          `${text}`,
+          delay,
+          () => {
+            setValuePostDisplay(newValue);
+          },
+        ]}
+        cursor={false}
+        omitDeletionAnimation={true}
+        speed={90}
+        style={{ whiteSpace: "pre-line", fontSize: "1.5rem" }}
+      />
+    </PageWrapper>
   );
 }
+
+const PageWrapper = styled.div`
+  font-family: "fira sans";
+`;

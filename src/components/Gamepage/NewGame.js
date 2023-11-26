@@ -13,6 +13,7 @@ import { textRichard } from "../../data/npcInteractions";
 import { playerOptions } from "../../data/playerOptions";
 import FormattedTypeAnimation from "./FormattedTypeAnimation";
 import WhatNext from "./WhatNext";
+import { Richard } from "../sprites/Characters";
 
 export default function NewGame({ setCurrentLocation }) {
   const [mostRecentTextPlayed, setMostRecentTextPlayed] = useState(0);
@@ -24,20 +25,26 @@ export default function NewGame({ setCurrentLocation }) {
   }
   return (
     <PageWrapper>
-      <FormattedTypeAnimation
-        text={textRichard.t001}
-        delay={2000}
-        setValuePostDisplay={setMostRecentTextPlayed}
-        newValue={1}
-      />
-
-      {mostRecentTextPlayed >= 1 && (
+      <div className="npcText">
+        <Richard className="sprite-1" />
         <FormattedTypeAnimation
-          text={textRichard.t002}
+          text={textRichard.t001}
           delay={2000}
           setValuePostDisplay={setMostRecentTextPlayed}
-          newValue={2}
+          newValue={1}
         />
+      </div>
+
+      {mostRecentTextPlayed >= 1 && (
+        <div className="npcText">
+          <Richard className="sprite-1" />
+          <FormattedTypeAnimation
+            text={textRichard.t002}
+            delay={2000}
+            setValuePostDisplay={setMostRecentTextPlayed}
+            newValue={2}
+          />
+        </div>
       )}
       {mostRecentTextPlayed >= 2 && (
         <WhatNext
@@ -46,12 +53,15 @@ export default function NewGame({ setCurrentLocation }) {
         />
       )}
       {mostRecentTextPlayed >= 2.5 && (
-        <FormattedTypeAnimation
-          text={textRichard.t003}
-          delay={2000}
-          setValuePostDisplay={setMostRecentTextPlayed}
-          newValue={3}
-        />
+        <div className="npcText">
+          <Richard />
+          <FormattedTypeAnimation
+            text={textRichard.t003}
+            delay={2000}
+            setValuePostDisplay={setMostRecentTextPlayed}
+            newValue={3}
+          />
+        </div>
       )}
       {mostRecentTextPlayed >= 3 && (
         <StyledGameButton
@@ -69,4 +79,16 @@ const PageWrapper = styled.div`
   position: sticky;
   top: 0;
   padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  .npcText {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: flex-start; */
+  }
+  .sprite-1 {
+    padding: 5px;
+  }
 `;

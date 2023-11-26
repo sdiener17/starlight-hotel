@@ -48,10 +48,4 @@ const PageWrapper = styled.div`
     display: flex;
     justify-content: center !important;
   }
-  .contentWrapper {
-    /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content:center; */
-  }
 `;

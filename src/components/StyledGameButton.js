@@ -38,7 +38,7 @@ const PageWrapper = styled.button`
     /* top: 0; */
     padding: 10px;
     border-radius: 5px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-family: "Pixelify Sans", sans-serif;
     background-color: gray;
   }
