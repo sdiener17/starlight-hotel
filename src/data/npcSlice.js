@@ -28,8 +28,8 @@ export const npcSlice = createSlice({
   },
 });
 
-export function selectNpcFromId(state, id) {
-  return state.filter((npc) => npc.npcId === id);
+export function selectNpcFromId(l, id) {
+  return l.filter((npc) => Number(npc.npcId) === id);
 }
 
 export function selectNpcCurrentTextSet(state, id) {
