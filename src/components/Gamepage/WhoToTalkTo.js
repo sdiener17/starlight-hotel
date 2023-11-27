@@ -4,7 +4,6 @@
  * Used By: Gamepage
  */
 import React, { useEffect } from "react";
-import { useStats } from "../../data/GameContext";
 import styled from "styled-components";
 import NPCCard from "./NPCCard";
 import { Richard, Darla } from "../sprites/Characters";
@@ -12,99 +11,46 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateLocation } from "../../data/playerSlice";
 import { selectNpcFromId } from "../../data/npcSlice";
 
-export default function WhoToTalkTo() {
+export default function WhoToTalkTo({ backTo }) {
   const dispatch = useDispatch();
   const npcList = useSelector((state) => state.npcList);
-  const stats = useStats();
-  const personRichard = { n: "Richard", location: "", available: false };
-  const personDarla = { n: "Darla", location: "", available: false };
-  const personLinenLady = { n: "Linen Lady", location: "", available: false };
-
-  function viewStat(statName) {
-    stats.map((s) => {
-      if (s.name === statName) {
-        return s.content;
-      }
-    });
-    return -1;
-  } //end viewStat
-
-  function convertNumToLocation(num) {
-    if (Number(num) === 0) {
-      return "Laundry Manager";
-    } else if (Number(num) === 1) {
-      return "Laundry Operator";
-    } else if (Number(num) === 2) {
-      return "Houseman";
-    } else {
-      return "Unknown";
-    }
-  }
-
-  //function to return true/false if the player knows this npc
-  function findAvailability(num) {
-    if (Number(num) === -1 || Number(num) === 0) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  useEffect(() => {
-    //Data for Richard
-    if (Number(viewStat("knowsRichard")) === 1) {
-      personRichard.location = convertNumToLocation(
-        viewStat("locationRichard")
-      );
-      personRichard.available = findAvailability(
-        viewStat("isAvailableRichard")
-      );
-    }
-    //Data for Darla
-    if (Number(viewStat("knowsDarla")) === 1) {
-      personDarla.location = convertNumToLocation(viewStat("locationDarla"));
-      personDarla.available = findAvailability(viewStat("isAvailableDarla"));
-    }
-    //Data for Linen Lady
-    if (Number(viewStat("knowsLinenLady")) === 1) {
-      personLinenLady.location = convertNumToLocation(
-        viewStat("locationLinenLady")
-      );
-      personLinenLady.available = findAvailability(
-        viewStat("isAvailableLinenLady")
-      );
-    }
-  }, []);
 
   const renderedNPCCards = npcList.map((npc) => {
-    return (
-      <NPCCard
-        name={npc.npcName}
-        location={npc.npcJob}
-        available={npc.npcIsAvailable}
-        imageId={npc.npcId}
-      />
-    );
+    if (npc.npcIsKnown) {
+      return (
+        <NPCCard
+          name={npc.npcName}
+          location={npc.npcJob}
+          available={npc.npcIsAvailable}
+          imageId={npc.npcId}
+        />
+      );
+    }
   });
+
+  function backButtonClick() {
+    dispatch(updateLocation(backTo));
+  }
 
   return (
     <PageWrapper>
       <h2>Who would you like to talk to?</h2>
-      <div className="peopleWrapper">
-        {renderedNPCCards}
-        <NPCCard
-          image={<Richard />}
-          name={personRichard.n}
-          location={personRichard.location}
-          available={personRichard.available}
-        />
-      </div>
+      <div className="peopleWrapper">{renderedNPCCards}</div>
+      <button
+        className="gameButton"
+        onClick={(e) => {
+          backButtonClick();
+        }}
+      >
+        Back
+      </button>
     </PageWrapper>
   );
 }
 
 const PageWrapper = styled.div`
   top: 0;
+  margin-bottom: var(--marginBottom);
   .peopleWrapper {
     display: flex;
     flex-direction: row;

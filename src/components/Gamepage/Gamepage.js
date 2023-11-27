@@ -33,7 +33,9 @@ export default function Gamepage() {
       {currentLocation === "gameStart" && <NewGame />}
       {currentLocation === "laundry" && <LaundryRoom />}
       {currentLocation === "whereTo" && <WhereTo />}
-      {currentLocation === "talkTo" && <WhoToTalkTo />}
+      {currentLocation === "talkTo_laundry" && (
+        <WhoToTalkTo backTo={"laundry"} />
+      )}
       {currentLocation === "explore_laundry" && (
         <Explore locationId={0} backTo={"laundry"} />
       )}

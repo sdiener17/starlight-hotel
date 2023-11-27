@@ -15,7 +15,7 @@ export const npcData = [
     npcJob: "Laundry Operator",
     npcSpriteLocation: "",
     npcIsAvailable: true,
-    npcIsKnown: false,
+    npcIsKnown: true,
     npcTextSetId: 1,
     npcCurrTextSet: 0,
   },

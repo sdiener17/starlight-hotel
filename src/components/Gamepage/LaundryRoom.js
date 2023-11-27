@@ -2,8 +2,6 @@
  * Created: 11/24/23
  * Description: Displays the laundry room and it's options for the player.
  * Input:
- * - setCurrentLocation: passed in from the main game page to allow this component to move the player to the laundry room after
- * the starting scene is finished.
  * Used By: Gamepage
  */
 import React, { useState } from "react";

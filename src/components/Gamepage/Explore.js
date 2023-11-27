@@ -1,3 +1,10 @@
+/* Written by: Sarah Diener (sdiener17)
+ * Created: 11/26/23
+ * Description: Displays the current discoveries available to the player in any given room, determined by the locationID prop.
+ * Input:
+ * - locationId: The numeric id of the location that the player is currently looking at discoveries for.
+ * Used By: Gamepage
+ */
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
@@ -83,20 +90,17 @@ const PageWrapper = styled.div`
     padding: 15px;
     border: 3px solid black;
     border-radius: 5px;
-    background-color: lightgray;
+    background-color: var(--buttonOne);
     margin: 10px;
   }
   .buttonUnopened:hover {
-    background-color: red;
-  }
-  .unopened:hover {
-    background-color: red;
+    background-color: var(--buttonOneHover);
   }
   .buttonOpened {
     border: 3px solid black;
     border-radius: 5px;
     padding: 15px;
-    background-color: lightgray;
+    background-color: var(--buttonOne);
     margin: 10px;
   }
 `;
