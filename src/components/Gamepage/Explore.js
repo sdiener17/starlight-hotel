@@ -3,17 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { updatePlayerHasOpened } from "../../data/exploreSlice";
 import { useExploreEvent } from "../../data/generalEventHandler";
+import { updateLocation } from "../../data/playerSlice";
 
-export default function Explore({ locationId }) {
-  const [discoveryTrigger, setDiscoveryTrigger] = useState("None");
+export default function Explore({ locationId, backTo }) {
+  //   const [discoveryTrigger, setDiscoveryTrigger] = useState("None");
+  const [someVar, invokeEvent] = useExploreEvent();
   //   return state.locations.find((loc) => Number(loc.locationId) === 0);
   const discoveries = useSelector((state) =>
     state.exploreData.find(
       (loc) => Number(loc.locationId) === Number(locationId)
     )
   );
+  const locationSubscription = useSelector((state) => state.locations);
   const dispatch = useDispatch();
-  const exploreEvent = useExploreEvent(discoveryTrigger);
 
   if (discoveries.data === undefined) {
     return <div>Error finding discoveries.</div>;
@@ -28,7 +30,11 @@ export default function Explore({ locationId }) {
         setValueTo: true,
       })
     );
-    setDiscoveryTrigger(clickedDiscoveryTrigger);
+    invokeEvent(clickedDiscoveryTrigger);
+  }
+
+  function backButtonClick() {
+    dispatch(updateLocation(backTo));
   }
 
   return (
@@ -55,12 +61,16 @@ export default function Explore({ locationId }) {
           );
         }
       })}
+      <button className="gameButton" onClick={(e) => backButtonClick()}>
+        Back
+      </button>
     </PageWrapper>
   );
 }
 
 const PageWrapper = styled.div`
   font-family: "fira sans";
+  margin-bottom: var(--marginBottom);
 
   .discoveryContainer {
     display: flex;

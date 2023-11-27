@@ -24,11 +24,12 @@ export const locationSlice = createSlice({
           Number(loc.locationId) === Number(action.payload.parentLocationId)
       );
       if (location != undefined) {
-        location.availableOptions.map((option) => {
-          if (option.availableOptionId === action.payload.optionId) {
-            option.currentlyDisabled = action.payload.setValueTo;
-          }
-        });
+        const found = location.availableOptions.find(
+          (option) =>
+            Number(option.availableOptionId) ===
+            Number(action.payload.availableOptionId)
+        );
+        found.currentlyDisabled = action.payload.setValueTo;
       }
     },
   },

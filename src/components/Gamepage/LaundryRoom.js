@@ -20,6 +20,7 @@ export default function LaundryRoom() {
   const laundry = useSelector((state) => {
     return state.locations.find((loc) => Number(loc.locationId) === 0);
   });
+  const currLocation = useSelector((state) => state.playerData.currentLocation);
   const dispatch = useDispatch();
 
   const renderOptions =
