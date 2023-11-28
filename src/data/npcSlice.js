@@ -25,6 +25,13 @@ export const npcSlice = createSlice({
         }
       });
     },
+    incrementNpcCurrTextSet: (state, action) => {
+      state.map((npc) => {
+        if (npc.npcId === action.payload.npcId) {
+          npc.npcCurrTextSet += 1;
+        }
+      });
+    },
   },
 });
 
@@ -37,6 +44,7 @@ export function selectNpcCurrentTextSet(state, id) {
 }
 
 // Action creators are generated for each case reducer function
-export const { updateNpcAvailable, updateNpcIsKnown } = npcSlice.actions;
+export const { updateNpcAvailable, updateNpcIsKnown, incrementNpcCurrTextSet } =
+  npcSlice.actions;
 
 export default npcSlice.reducer;

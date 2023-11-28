@@ -7,20 +7,23 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NPCCard from "./NPCCard";
 import Sprite from "./Sprite";
+import WhatNext from "./WhatNext";
 import { Richard, Darla } from "../sprites/Characters";
 import { useDispatch, useSelector } from "react-redux";
 import { updateLocation } from "../../data/playerSlice";
-import { selectNpcFromId } from "../../data/npcSlice";
+import { incrementNpcCurrTextSet, selectNpcFromId } from "../../data/npcSlice";
 import { npcTextSets } from "../../data/npcTextSets";
 import FormattedTypeAnimation from "./FormattedTypeAnimation";
+import NPCDialog from "./NPCDialog";
 
 export default function WhoToTalkTo({ backTo }) {
   const dispatch = useDispatch();
   const npcList = useSelector((state) => state.npcList);
   const [currentlyShowing, setCurrentlyShowing] = useState("selection");
   const [dialogTextSet, setDialogTextSet] = useState([]);
-  const [currentDialogSubsetId, setCurrentDialogSubsetId] = useState(-1);
+  // const [currentDialogSubsetId, setCurrentDialogSubsetId] = useState(-1);
   const [currentlySelectedNpcId, setCurrentlySelectedNpcId] = useState(-1);
+  const [currentlySelectedNpc, setCurrentlySelectedNpc] = useState({});
   // const selectedNpc = {};
   // const currentlySelectedId = -1;
 
@@ -31,38 +34,18 @@ export default function WhoToTalkTo({ backTo }) {
   function handleNpcSelect(id) {
     //Pull out the npc that the player selected
     // const selectedNpc = npcList.find((npc) => Number(npc.npcId) === Number(id));
-    const selectedNpc = selectNpcFromId(npcList, id);
+    setCurrentlySelectedNpc(selectNpcFromId(npcList, id));
     //Get the text set for the selected npc and grab the specific text item needed
     npcTextSets.map((set) => {
-      if (set.textSetId === selectedNpc.npcTextSetId) {
+      if (set.textSetId === currentlySelectedNpc.npcTextSetId) {
         setDialogTextSet(set.textSet);
-        setCurrentDialogSubsetId(selectedNpc.npcCurrTextSet);
-        setCurrentlySelectedNpcId(selectedNpc.npcId);
+        // setCurrentDialogSubsetId(currentlySelectedNpc.npcCurrTextSet);
+        setCurrentlySelectedNpcId(currentlySelectedNpc.npcId);
         setCurrentlyShowing("dialog");
         return;
       }
     });
   }
-
-  function hi() {
-    //does nothing
-  }
-
-  const renderedDialog = dialogTextSet.map((text) => {
-    if (text.subsetId === currentDialogSubsetId) {
-      return (
-        <div className="npcText">
-          <Sprite npcId={currentlySelectedNpcId} />
-          <FormattedTypeAnimation
-            text={text.text}
-            delay={10}
-            setValuePostDisplay={hi}
-            newValue={1}
-          />
-        </div>
-      );
-    }
-  });
 
   const renderedNPCCards = npcList.map((npc) => {
     if (npc.npcIsKnown) {
@@ -93,7 +76,13 @@ export default function WhoToTalkTo({ backTo }) {
         <div className="peopleWrapper">{renderedNPCCards}</div>
       )}
 
-      {currentlyShowing === "dialog" && <>{renderedDialog}</>}
+      {currentlyShowing === "dialog" && (
+        <NPCDialog
+          currentNpc={currentlySelectedNpc}
+          textSet={dialogTextSet}
+          setCurrentlyShowing={setCurrentlyShowing}
+        />
+      )}
 
       <button
         className="gameButton"
@@ -142,5 +131,8 @@ const PageWrapper = styled.div`
     flex-direction: row;
     align-items: center;
     /* justify-content: flex-start; */
+  }
+  .selectionBox {
+    padding: 10px;
   }
 `;
