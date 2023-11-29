@@ -86,10 +86,6 @@ export default function NPCDialog({
     //stop looping
   }
 
-  function handleOptionSelect() {
-    //something
-  }
-
   return (
     <PageWrapper>
       {typeDialogCurrentlyDisplaying === "text" && (

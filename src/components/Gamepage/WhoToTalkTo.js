@@ -32,6 +32,7 @@ export default function WhoToTalkTo({ backTo }) {
   // }, [currentlyShowing]);
 
   function handleNpcSelect(id) {
+    console.log("CLICKED THIS GUY " + id);
     //Pull out the npc that the player selected
     // const selectedNpc = npcList.find((npc) => Number(npc.npcId) === Number(id));
     setCurrentlySelectedNpc(selectNpcFromId(npcList, id));
