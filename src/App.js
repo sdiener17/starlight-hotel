@@ -8,6 +8,7 @@ import Footer from "./components/Footer.js";
 import Homepage from "./components/Homepage/Homepage.js";
 import Gamepage from "./components/Gamepage/Gamepage.js";
 import Credits from "./components/Credits.js";
+import About from "./components/About.js";
 
 export default function App() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -15,7 +16,7 @@ export default function App() {
     <PageWrapper>
       {/* <DataProvider> */}
       <Header gameStarted={gameStarted} />
-      <div>
+      <div className="bodyContent">
         {/* <NavBar /> */}
         <Routes>
           <Route
@@ -23,8 +24,9 @@ export default function App() {
             path="/"
             element={<Homepage setGameStarted={setGameStarted} />}
           />
-          <Route path="game" element={<Gamepage />} />
-          <Route path="credits" element={<Credits />} />
+          <Route exact path="/game" element={<Gamepage />} />
+          <Route exact path="/credits" element={<Credits />} />
+          <Route exact path="/about" element={<About />} />
         </Routes>
       </div>
       <div className="separaterBottomFooter" />

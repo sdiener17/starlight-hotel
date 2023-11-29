@@ -52,12 +52,13 @@ export default function Credits() {
 
 const PageWrapper = styled.div`
   margin-bottom: var(--marginBottom);
+  padding: 10px;
   .credit {
     display: flex;
     flex-direction: column;
-    width: 100%;
     border: 2px solid black;
     border-radius: 5px;
     margin: 10px;
+    padding: 5px;
   }
 `;

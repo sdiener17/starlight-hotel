@@ -33,27 +33,38 @@ export default function Homepage({ setGameStarted }) {
   return (
     <PageWrapper>
       <div className="pageMain">
-        <StyledGameButton
-          buttonContent={"Start New Game"}
-          buttonDisabled={false}
-          handleButtonClick={handleNewGameClick}
-        />
-        <StyledGameButton
-          buttonContent={"Load Game From File"}
-          buttonDisabled={false}
-          handleButtonClick={handleLoadGameClick}
-        />
+        <button className="gameButton homeButton" onClick={handleNewGameClick}>
+          Start New Game
+        </button>
+        <button className="gameButton homeButton" onClick={handleLoadGameClick}>
+          Load Game From File
+        </button>
       </div>
     </PageWrapper>
   );
 }
 
 const PageWrapper = styled.div`
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* width: 100%; */
   .pageMain {
-    background-color: gray;
+    /* background-color: gray; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid black;
+    border-radius: 5px;
+    width: 50%;
+    padding: 10px;
+  }
+  .homeButton {
+    margin: 10px;
   }
 `;
