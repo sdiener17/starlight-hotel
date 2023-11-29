@@ -21,21 +21,12 @@ export default function Header({ gameStarted }) {
 
   return (
     <PageWrapper>
-      {gameStarted ? (
-        <div className="headerMain">
-          {/* <img src={mainLogo} className="logo" alt="GURPS Book image"></img> */}
-          <div className="headerTitle">The Starlight Hotel</div>
-          {/* <NavBar /> */}
-        </div>
-      ) : (
-        <h1 className="headerMain">The Starlight Hotel</h1>
-      )}
+      <h1 className="headerMain">The Starlight Hotel</h1>
     </PageWrapper>
   );
 }
 
 const PageWrapper = styled.nav`
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   padding: 1rem 1.5rem;

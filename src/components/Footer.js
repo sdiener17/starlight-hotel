@@ -11,8 +11,21 @@ export default function Footer() {
   return (
     <FootWrapper>
       <div className="FooterMain">
-        <a href="/credits">Credits</a>
-        <p className="text-1">Copyright 2024</p>
+        <div className="links">
+          <p className="text-1">Copyright 2024</p>
+          &nbsp; | &nbsp;
+          <a href="/" className="footerLink">
+            Home
+          </a>
+          &nbsp; | &nbsp;
+          <a href="/credits" className="footerLink">
+            Credits
+          </a>
+          &nbsp; | &nbsp;
+          <a href="/about" className="footerLink">
+            About
+          </a>
+        </div>
         {/* <ReactAudioPlayer
           src={Mr_Blue_Sky}
           autoPlay={true}
@@ -29,13 +42,12 @@ const FootWrapper = styled.footer`
   //margin-top: 60px;
   .FooterMain {
     display: flex;
+    /* flex-direction: column; */
     align-items: center;
-    vertical-align: bottom;
-    justify-content: space-around;
-    flex-direction: row;
+    /* vertical-align: bottom; */
+    justify-content: center;
     //max-width: 1600px;
     //margin: 5 auto;
-    position: -webkit-sticky;
     position: sticky;
     position: fixed;
     bottom: 0;
@@ -47,9 +59,20 @@ const FootWrapper = styled.footer`
       var(--primarySiteColor),
       var(--darkSiteColor)
     );
-    border-bottom: 5px solid var(--mediumGrey);
+    border-bottom: 5px solid var(--secondarySiteColor);
     z-index: 999;
     color: var(--lightGrey);
+  }
+  .links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .footerLink {
+    margin: 10px;
+    font-family: "fira-sans";
+    font-size: 1rem;
   }
   .text-1 {
     margin-right: 10px;
@@ -61,11 +84,34 @@ const FootWrapper = styled.footer`
   @media screen and (max-width: 500px) {
     .FooterMain {
       float: none;
-      display: block;
+      /* display: block; */
       text-align: left;
     }
     .header-right {
       float: none;
     }
   }
+  a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: gray;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: darkgray;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  /* a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+  } */
 `;
