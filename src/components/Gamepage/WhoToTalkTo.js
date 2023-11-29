@@ -102,6 +102,10 @@ const PageWrapper = styled.div`
   .peopleWrapper {
     display: flex;
     flex-direction: row;
+    @media (max-width: 500px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
   .card {
     border: 3px solid black;
@@ -131,6 +135,10 @@ const PageWrapper = styled.div`
     flex-direction: row;
     align-items: center;
     /* justify-content: flex-start; */
+    @media (max-width: 500px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
   .selectionBox {
     padding: 10px;

@@ -60,6 +60,10 @@ const PageWrapper = styled.div`
   .buttonWrapper {
     display: flex;
     flex-direction: row;
+    @media (max-width: 500px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
   .optionButton {
     margin: 10px;
