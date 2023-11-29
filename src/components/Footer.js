@@ -3,6 +3,7 @@
  * Description: Footer component for the game.
  */
 import React from "react";
+import { Link } from "react-router-dom";
 import ReactAudioPlayer from "react-audio-player";
 import styled from "styled-components";
 // import Mr_Blue_Sky from "../music/Mr_Blue_Sky.mp3";
@@ -14,17 +15,17 @@ export default function Footer() {
         <div className="links">
           <p className="text-1">Copyright 2024</p>
           &nbsp; | &nbsp;
-          <a href="/" className="footerLink">
+          <Link to="/" className="footerLink">
             Home
-          </a>
+          </Link>
           &nbsp; | &nbsp;
-          <a href="/credits" className="footerLink">
+          <Link to="/credits" className="footerLink">
             Credits
-          </a>
+          </Link>
           &nbsp; | &nbsp;
-          <a href="/about" className="footerLink">
+          <Link to="/about" className="footerLink">
             About
-          </a>
+          </Link>
         </div>
         {/* <ReactAudioPlayer
           src={Mr_Blue_Sky}
@@ -91,19 +92,19 @@ const FootWrapper = styled.footer`
       float: none;
     }
   }
-  a:link {
+  .footerLink:link {
     color: white;
     background-color: transparent;
     text-decoration: none;
   }
 
-  a:visited {
+  .footerLink:visited {
     color: gray;
     background-color: transparent;
     text-decoration: none;
   }
 
-  a:hover {
+  .footerLink:hover {
     color: darkgray;
     background-color: transparent;
     text-decoration: underline;
