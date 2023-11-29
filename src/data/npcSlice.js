@@ -25,11 +25,18 @@ export const npcSlice = createSlice({
         }
       });
     },
+    incrementNpcCurrTextSet: (state, action) => {
+      state.map((npc) => {
+        if (npc.npcId === action.payload.npcId) {
+          npc.npcCurrTextSet += 1;
+        }
+      });
+    },
   },
 });
 
-export function selectNpcFromId(l, id) {
-  return l.filter((npc) => Number(npc.npcId) === id);
+export function selectNpcFromId(npcl, id) {
+  return npcl.find((npc) => Number(npc.npcId) === Number(id));
 }
 
 export function selectNpcCurrentTextSet(state, id) {
@@ -37,6 +44,7 @@ export function selectNpcCurrentTextSet(state, id) {
 }
 
 // Action creators are generated for each case reducer function
-export const { updateNpcAvailable, updateNpcIsKnown } = npcSlice.actions;
+export const { updateNpcAvailable, updateNpcIsKnown, incrementNpcCurrTextSet } =
+  npcSlice.actions;
 
 export default npcSlice.reducer;

@@ -7,6 +7,7 @@ import Header from "./components/Header/Header.js";
 import Footer from "./components/Footer.js";
 import Homepage from "./components/Homepage/Homepage.js";
 import Gamepage from "./components/Gamepage/Gamepage.js";
+import Credits from "./components/Credits.js";
 
 export default function App() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -23,6 +24,7 @@ export default function App() {
             element={<Homepage setGameStarted={setGameStarted} />}
           />
           <Route path="game" element={<Gamepage />} />
+          <Route path="credits" element={<Credits />} />
         </Routes>
       </div>
       <div className="separaterBottomFooter" />

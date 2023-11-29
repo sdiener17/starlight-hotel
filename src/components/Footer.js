@@ -11,6 +11,7 @@ export default function Footer() {
   return (
     <FootWrapper>
       <div className="FooterMain">
+        <a href="/credits">Credits</a>
         <p className="text-1">Copyright 2024</p>
         {/* <ReactAudioPlayer
           src={Mr_Blue_Sky}
@@ -30,7 +31,7 @@ const FootWrapper = styled.footer`
     display: flex;
     align-items: center;
     vertical-align: bottom;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: row;
     //max-width: 1600px;
     //margin: 5 auto;
