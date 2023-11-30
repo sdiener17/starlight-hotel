@@ -12,6 +12,7 @@ import WhatNext from "./WhatNext";
 import FormattedTypeAnimation from "./FormattedTypeAnimation";
 import { updateLocation } from "../../data/playerSlice";
 import { incrementNpcCurrTextSet, selectNpcFromId } from "../../data/npcSlice";
+import WhatNextForDialog from "./WhatNextForDialog";
 
 export default function NPCDialog({
   currentNpc,
@@ -26,9 +27,10 @@ export default function NPCDialog({
   const [currentOptionsToDisplay, setCurrentOptionsToDisplay] = useState([]);
   const [typeDialogCurrentlyDisplaying, setTypeDialogCurrentlyDisplaying] =
     useState("");
-  const loopFinished = false;
+  const [loopIsFinished, setLoopIsFinished] = useState(false);
 
   useEffect(() => {
+    console.log("Entered useEffect.");
     nextStep(1);
   }, []);
 
@@ -47,23 +49,25 @@ export default function NPCDialog({
   //Function to perform the next step of the dialog
   //Called after each step finishes (such as npc text is displayed or the player makes a choice)
   function nextStep(increment) {
-    if (loopFinished) {
+    console.log("Entered nextStep method");
+    if (loopIsFinished) {
+      console.log("FINISHED");
       return;
     }
-    const npcCurrTextSetId = currentNpc.npcCurrTextSetId;
+    const npcCurrTextSetId = currentNpc.npcCurrTextSet;
     //Go through the text set options for this npc and find the one that is currently supposed to be displayed
     textSet.map((textOption) => {
       //looking at current text set to show
-      if (textOption.subsetId === npcCurrTextSetId) {
+      if (Number(textOption.subsetId) === Number(npcCurrTextSetId)) {
         //If we're looking at npc dialog text
         if (!textOption.isPlayerResponse) {
           setCurrentlyTalkingNpcId(currentNpc.npcId);
           setCurrentTextToDisplay(textOption.text);
           //If we should increment to the next text set after showing this one
           if (textOption.continuesImmediately) {
-            dispatch(incrementNpcCurrTextSet(1));
+            dispatch(incrementNpcCurrTextSet(currentNpc.npcId));
           } else {
-            loopFinished = true;
+            setLoopIsFinished(true);
           }
           setTypeDialogCurrentlyDisplaying("text");
         }
@@ -71,9 +75,9 @@ export default function NPCDialog({
         else {
           //If we should increment to the next text set after showing this one
           if (textOption.continuesImmediately) {
-            dispatch(incrementNpcCurrTextSet(1));
+            dispatch(incrementNpcCurrTextSet(currentNpc.npcId));
           } else {
-            loopFinished = true;
+            setLoopIsFinished(true);
           }
           setCurrentlyTalkingNpcId(-10);
           setCurrentOptionsToDisplay(textOption.playerResponseOptions);
@@ -102,9 +106,9 @@ export default function NPCDialog({
 
       {typeDialogCurrentlyDisplaying === "options" && (
         <div className="selectionBox">
-          <WhatNext
+          <WhatNextForDialog
             options={currentOptionsToDisplay}
-            handleOptionSelect={nextStep(1)}
+            nextStep={nextStep}
           />
         </div>
       )}

@@ -99,7 +99,7 @@ const FootWrapper = styled.footer`
   }
 
   .footerLink:visited {
-    color: gray;
+    color: white;
     background-color: transparent;
     text-decoration: none;
   }

@@ -35,6 +35,8 @@ export const npcSlice = createSlice({
   },
 });
 
+export const selectNpcList = (state) => state.npcList;
+
 export function selectNpcFromId(npcl, id) {
   return npcl.find((npc) => Number(npc.npcId) === Number(id));
 }

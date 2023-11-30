@@ -11,19 +11,26 @@ import WhatNext from "./WhatNext";
 import { Richard, Darla } from "../sprites/Characters";
 import { useDispatch, useSelector } from "react-redux";
 import { updateLocation } from "../../data/playerSlice";
-import { incrementNpcCurrTextSet, selectNpcFromId } from "../../data/npcSlice";
+import {
+  incrementNpcCurrTextSet,
+  selectNpcFromId,
+  selectNpcList,
+} from "../../data/npcSlice";
 import { npcTextSets } from "../../data/npcTextSets";
 import FormattedTypeAnimation from "./FormattedTypeAnimation";
 import NPCDialog from "./NPCDialog";
 
 export default function WhoToTalkTo({ backTo }) {
   const dispatch = useDispatch();
-  const npcList = useSelector((state) => state.npcList);
+  // const npcList = useSelector((state) => state.npcList);
+  const npcList = useSelector(selectNpcList);
   const [currentlyShowing, setCurrentlyShowing] = useState("selection");
   const [dialogTextSet, setDialogTextSet] = useState([]);
   // const [currentDialogSubsetId, setCurrentDialogSubsetId] = useState(-1);
   const [currentlySelectedNpcId, setCurrentlySelectedNpcId] = useState(-1);
-  const [currentlySelectedNpc, setCurrentlySelectedNpc] = useState({});
+  const [currentlySelectedNpc, setCurrentlySelectedNpc] = useState({
+    npcName: "Bob",
+  });
   // const selectedNpc = {};
   // const currentlySelectedId = -1;
 
@@ -31,17 +38,19 @@ export default function WhoToTalkTo({ backTo }) {
   //   //nothing
   // }, [currentlyShowing]);
 
-  function handleNpcSelect(id) {
-    console.log("CLICKED THIS GUY " + id);
+  function handleNpcSelect(e, id) {
+    e.preventDefault();
+    // console.log("CLICKED THIS GUY " + id);
     //Pull out the npc that the player selected
-    // const selectedNpc = npcList.find((npc) => Number(npc.npcId) === Number(id));
-    setCurrentlySelectedNpc(selectNpcFromId(npcList, id));
+    //Need 'holdNpc' due to the fact that setting state with hooks won't update till the function is finished
+    var holdNpc = selectNpcFromId(npcList, id);
+    setCurrentlySelectedNpc(holdNpc);
     //Get the text set for the selected npc and grab the specific text item needed
     npcTextSets.map((set) => {
-      if (set.textSetId === currentlySelectedNpc.npcTextSetId) {
+      if (set.textSetId === holdNpc.npcTextSetId) {
         setDialogTextSet(set.textSet);
         // setCurrentDialogSubsetId(currentlySelectedNpc.npcCurrTextSet);
-        setCurrentlySelectedNpcId(currentlySelectedNpc.npcId);
+        setCurrentlySelectedNpcId(holdNpc.npcId);
         setCurrentlyShowing("dialog");
         return;
       }
@@ -54,7 +63,7 @@ export default function WhoToTalkTo({ backTo }) {
         <div
           className={`card ${npc.npcIsAvailable ? "available" : "unavailable"}`}
           onClick={(e) => {
-            handleNpcSelect(npc.npcId);
+            handleNpcSelect(e, npc.npcId);
           }}
         >
           <Sprite npcId={npc.npcId} />
