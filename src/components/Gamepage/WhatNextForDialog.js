@@ -10,6 +10,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import FormattedTypeAnimation from "./FormattedTypeAnimation";
+import Sprite from "./Sprite";
 
 export default function WhatNextForDialog({ options, nextStep }) {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -50,12 +51,15 @@ export default function WhatNextForDialog({ options, nextStep }) {
           );
         })}
         {showOptionChosen && (
-          <FormattedTypeAnimation
-            text={selectedText}
-            delay={100}
-            setValuePostDisplay={nextStep}
-            newValue={1}
-          />
+          <div>
+            <Sprite npcId={-10} />
+            <FormattedTypeAnimation
+              text={selectedText}
+              delay={100}
+              setValuePostDisplay={nextStep}
+              newValue={1}
+            />
+          </div>
         )}
       </div>
     </PageWrapper>

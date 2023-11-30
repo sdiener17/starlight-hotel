@@ -34,7 +34,7 @@ export const npcTextSets = [
         ],
       },
       {
-        subsetId: 2,
+        subsetId: 3,
         text: "Tell me about it. I'm putting you with Darla for now. She's in charge of filling orders to our different locations. We get busy around this time of year, so I'm sure she'll keep you on your toes. Good luck!",
         includesPlayerResponse: false,
         playerResponseOptions: [],
