@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { npcTextSets } from "../../data/npcTextSets";
 import Sprite from "./Sprite";
-import WhatNext from "./WhatNext";
 import FormattedTypeAnimation from "./FormattedTypeAnimation";
 import { updateLocation } from "../../data/playerSlice";
 import { incrementNpcCurrTextSet, selectNpcFromId } from "../../data/npcSlice";
@@ -16,40 +15,29 @@ import WhatNextForDialog from "./WhatNextForDialog";
 import { TypeAnimation } from "react-type-animation";
 
 export default function NPCDialog({
-  currentNpc,
+  currentNpcId,
   textSet,
   setCurrentlyShowing,
+  npcList,
 }) {
-  //   const npcList = useSelector((state) => state.npcList);
+  // const npcList = useSelector((state) => state.npcList);
   const dispatch = useDispatch();
 
   const [currentlyTalkingNpcId, setCurrentlyTalkingNpcId] = useState(-1);
   const [currentTextToDisplay, setCurrentTextToDisplay] = useState("");
   const [currentOptionsToDisplay, setCurrentOptionsToDisplay] = useState([]);
   const [typeDialogCurrentlyDisplaying, setTypeDialogCurrentlyDisplaying] =
-    useState("");
+    useState("Bob");
   // let currentlyTalkingNpcId = -1;
   // let currentTextToDisplay = "";
   // let currentOptionsToDisplay = [];
   // let typeDialogCurrentlyDisplaying = "";
   const [loopIsFinished, setLoopIsFinished] = useState(false);
 
-  // useEffect(() => {
-  //   console.log("Entered useEffect.");
-  //   // nextStep(1);
-  // }, []);
-
-  //   const selectedNpc = selectNpcFromId(npcList, npcId);
-  //   //Get the text set for the selected npc and grab the specific text item needed
-  //   npcTextSets.map((set) => {
-  //     if (set.textSetId === selectedNpc.npcTextSetId) {
-  //       setDialogTextSet(set.textSet);
-  //       setCurrentDialogSubsetId(selectedNpc.npcCurrTextSet);
-  //       setCurrentlySelectedNpcId(selectedNpc.npcId);
-  //       setCurrentlyShowing("dialog");
-  //       return;
-  //     }
-  //   });
+  useEffect(() => {
+    console.log("Entered useEffect.");
+    // nextStep(1);
+  }, [typeDialogCurrentlyDisplaying, currentTextToDisplay]);
 
   //Function to perform the next step of the dialog
   //Called after each step finishes (such as npc text is displayed or the player makes a choice)
@@ -60,6 +48,7 @@ export default function NPCDialog({
       console.log("FINISHED");
       return;
     }
+    const currentNpc = selectNpcFromId(npcList, currentNpcId);
     const npcCurrTextSetId = currentNpc.npcCurrTextSet;
     //Go through the text set options for this npc and find the one that is currently supposed to be displayed
     for (var i = 0; i < textSet.length; i++) {
@@ -67,7 +56,7 @@ export default function NPCDialog({
       console.log(
         "step 1 + Looking for text #" +
           npcCurrTextSetId +
-          "Looking at text #" +
+          " Looking at text #" +
           textOption.subsetId
       );
       //looking at current text set to show
@@ -76,14 +65,14 @@ export default function NPCDialog({
         //If we're looking at npc dialog text
         if (!textOption.isPlayerResponse) {
           console.log("step 3");
-          setCurrentlyTalkingNpcId(currentNpc.npcId);
+          setCurrentlyTalkingNpcId(currentNpcId);
           setCurrentTextToDisplay(textOption.text);
-          // currentlyTalkingNpcId = currentNpc.npcId;
+          // currentlyTalkingNpcId = currentNpcId;
           // currentTextToDisplay = textOption.text;
           //If we should increment to the next text set after showing this one
           if (textOption.continuesImmediately) {
             console.log("step 4");
-            dispatch(incrementNpcCurrTextSet({ npcId: currentNpc.npcId }));
+            dispatch(incrementNpcCurrTextSet({ npcId: currentNpcId }));
           } else {
             setLoopIsFinished(true);
           }
@@ -95,7 +84,7 @@ export default function NPCDialog({
         else {
           //If we should increment to the next text set after showing this one
           if (textOption.continuesImmediately) {
-            dispatch(incrementNpcCurrTextSet({ npcId: currentNpc.npcId }));
+            dispatch(incrementNpcCurrTextSet({ npcId: currentNpcId }));
           } else {
             setLoopIsFinished(true);
           }
@@ -107,13 +96,13 @@ export default function NPCDialog({
           // typeDialogCurrentlyDisplaying = "options";
         } //end outer if
         return;
-        console.log("NOT SUPPOSED TO BE HERE");
       }
     }
-    // textSet.forEach((textOption) => {
-
-    // });
   } // end nextStep
+
+  function nextButtonShow() {
+    // setNextShow(true);
+  }
 
   return (
     <PageWrapper>
@@ -121,30 +110,33 @@ export default function NPCDialog({
         Yooooooooooooooooo
       </button>
       {typeDialogCurrentlyDisplaying === "text" && (
-        <div className="npcText">
-          <Sprite npcId={currentlyTalkingNpcId} />
-          <div className="formattedTypeAnimation">
-            <TypeAnimation
-              sequence={[
-                `${currentTextToDisplay}`,
-                100,
-                () => {
-                  nextStep(1);
-                },
-              ]}
-              cursor={false}
-              omitDeletionAnimation={true}
-              speed={90}
-              style={{ whiteSpace: "pre-line", fontSize: "1.5rem" }}
-            />
+        <div className="wholeDialogBox">
+          <div className="npcText">
+            <Sprite npcId={currentlyTalkingNpcId} />
+            <div className="formattedTypeAnimation">
+              <TypeAnimation
+                sequence={[
+                  `${currentTextToDisplay}`,
+                  100,
+                  () => {
+                    nextButtonShow();
+                  },
+                ]}
+                cursor={false}
+                omitDeletionAnimation={true}
+                speed={90}
+                style={{ whiteSpace: "pre-line", fontSize: "1.5rem" }}
+              />
+            </div>
           </div>
-
-          {/* <FormattedTypeAnimation
-            text={currentTextToDisplay}
-            delay={100}
-            setValuePostDisplay={() => nextStep}
-            newValue={1}
-          /> */}
+          <div className="nextButtonWrapper">
+            <button
+              className="gameButton nextButton"
+              onClick={(e) => nextStep(1)}
+            >
+              Next
+            </button>
+          </div>
         </div>
       )}
 
@@ -152,8 +144,12 @@ export default function NPCDialog({
         <div className="selectionBox">
           <WhatNextForDialog
             options={currentOptionsToDisplay}
-            nextStep={nextStep}
+            nextStep={nextButtonShow}
           />
+
+          <button className="gameButton" onClick={(e) => nextStep(1)}>
+            Next
+          </button>
         </div>
       )}
 
@@ -182,6 +178,21 @@ const PageWrapper = styled.div`
     font-family: "fira sans";
     height: 60%;
     width: 60%;
+  }
+  .wholeDialogBox {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    margin: 10px;
+  }
+  .nextButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .nextButton {
+    width: 30%;
   }
 `;
 

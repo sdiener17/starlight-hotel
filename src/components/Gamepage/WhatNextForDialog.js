@@ -51,7 +51,7 @@ export default function WhatNextForDialog({ options, nextStep }) {
           );
         })}
         {showOptionChosen && (
-          <div>
+          <div className="npcText">
             <Sprite npcId={-10} />
             <FormattedTypeAnimation
               text={selectedText}
@@ -81,5 +81,11 @@ const PageWrapper = styled.div`
   }
   .buttonWrapper {
     margin: 10px;
+  }
+  .npcText {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 `;

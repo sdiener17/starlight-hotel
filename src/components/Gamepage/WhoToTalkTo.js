@@ -88,7 +88,8 @@ export default function WhoToTalkTo({ backTo }) {
 
       {currentlyShowing === "dialog" && (
         <NPCDialog
-          currentNpc={currentlySelectedNpc}
+          npcList={npcList}
+          currentNpcId={currentlySelectedNpcId}
           textSet={dialogTextSet}
           setCurrentlyShowing={setCurrentlyShowing}
         />
