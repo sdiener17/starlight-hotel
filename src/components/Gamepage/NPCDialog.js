@@ -27,17 +27,25 @@ export default function NPCDialog({
   const [currentTextToDisplay, setCurrentTextToDisplay] = useState("");
   const [currentOptionsToDisplay, setCurrentOptionsToDisplay] = useState([]);
   const [typeDialogCurrentlyDisplaying, setTypeDialogCurrentlyDisplaying] =
-    useState("Bob");
+    useState("");
   // let currentlyTalkingNpcId = -1;
   // let currentTextToDisplay = "";
   // let currentOptionsToDisplay = [];
   // let typeDialogCurrentlyDisplaying = "";
   const [loopIsFinished, setLoopIsFinished] = useState(false);
 
+  // useEffect(() => {
+  //   console.log("Entered useEffect.");
+  //   // nextStep(1);
+  // }, [typeDialogCurrentlyDisplaying, currentTextToDisplay]);
   useEffect(() => {
-    console.log("Entered useEffect.");
-    // nextStep(1);
-  }, [typeDialogCurrentlyDisplaying, currentTextToDisplay]);
+    nextStep(1);
+  }, []);
+
+  function forceReRenderNextStep() {
+    setTypeDialogCurrentlyDisplaying("");
+    nextStep(1);
+  }
 
   //Function to perform the next step of the dialog
   //Called after each step finishes (such as npc text is displayed or the player makes a choice)
@@ -106,9 +114,6 @@ export default function NPCDialog({
 
   return (
     <PageWrapper>
-      <button className="gameButton" onClick={(e) => nextStep(1)}>
-        Yooooooooooooooooo
-      </button>
       {typeDialogCurrentlyDisplaying === "text" && (
         <div className="wholeDialogBox">
           <div className="npcText">
@@ -152,6 +157,12 @@ export default function NPCDialog({
           </button>
         </div>
       )}
+      <button
+        className="gameButton nextButton"
+        onClick={(e) => forceReRenderNextStep()}
+      >
+        Next (Better)
+      </button>
 
       <button
         className="gameButton"

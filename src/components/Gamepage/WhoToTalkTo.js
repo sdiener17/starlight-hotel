@@ -94,15 +94,16 @@ export default function WhoToTalkTo({ backTo }) {
           setCurrentlyShowing={setCurrentlyShowing}
         />
       )}
-
-      <button
-        className="gameButton"
-        onClick={(e) => {
-          backButtonClick();
-        }}
-      >
-        Back
-      </button>
+      {currentlyShowing != "dialog" && (
+        <button
+          className="gameButton"
+          onClick={(e) => {
+            backButtonClick();
+          }}
+        >
+          Back
+        </button>
+      )}
     </PageWrapper>
   );
 }

@@ -40,20 +40,13 @@ export const npcTextSets = [
     textSet: [
       {
         subsetId: 0,
-        text: "Well hello there, you must be Kira! They told me we were getting some new help.",
+        text: `"Well hello there, you must be Kira! They told me we were getting some new help."\n"I'll give you a quick tour before we get started."`,
         isPlayerResponse: false,
         playerResponseOptions: [],
         continuesImmediately: true,
       },
       {
         subsetId: 1,
-        text: "I'll give you a quick tour before we get started.",
-        isPlayerResponse: false,
-        playerResponseOptions: [],
-        continuesImmediately: true,
-      },
-      {
-        subsetId: 2,
         text: "",
         isPlayerResponse: true,
         playerResponseOptions: [
