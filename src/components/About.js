@@ -1,36 +1,85 @@
 import React from "react";
 import styled from "styled-components";
+import { aboutData } from "../data/aboutPageData";
 
 export default function About() {
   return (
     <PageWrapper>
       <h2>About</h2>
-      <h3>General Overview</h3>
-      <p>
-        This game came about from an experience I had working in a hotel laundry
-        room one summer with a friend. We had fun coming up with wild
-        conspiracies and mysteries while on the job, and I thought it could be a
-        fun idea for a game.
-      </p>
-      <p>
-        The player starts out as a new hire at the Starlight Hotel named Kira
-        who, after meeting a few coworkers, starts to realize that there's more
-        to this hotel than meets the eye. Through interacting with coworkers and
-        exploring the various hotel areas, the player will uncover the secrets
-        hidden the shiny, beachside hotel.
-      </p>
-      <h3>Project Purpose</h3>
-      <p>Stuff about how this was a capstone project for my ICS degree</p>
-      <p>Link to github repo?</p>
-      <h3>Process</h3>
-      <p>
-        Stuff about the process I took to make the game, technologies used,
-        things I learned, challenges, etc.
-      </p>
+      <div className="aboutSection">
+        <h3>Project Purpose</h3>
+        <p>{aboutData.projectPurposeText1}</p>
+        <p>
+          The code for this project can be found at github{" "}
+          <a
+            href="https://github.com/sdiener17/starlight-hotel"
+            target="_blank"
+          >
+            {" "}
+            here.
+          </a>
+        </p>
+      </div>
+      <div className="aboutSection">
+        <h3>General Overview</h3>
+        <p>{aboutData.generalOverviewText1}</p>
+        <p>{aboutData.generalOverviewText2}</p>
+      </div>
+
+      <div className="aboutSection">
+        <h3>Technical Details</h3>
+        <p>{aboutData.technicalDetailsText1}</p>
+        <p>
+          Stuff about the process I took to make the game, technologies used,
+          things I learned, challenges, etc.
+        </p>
+      </div>
+      <div className="aboutSection">
+        <h3>Story Outline</h3>
+        <p>Outline of the planned game story and/or link to more info</p>
+      </div>
+      <div className="aboutSection">
+        <h3>What I Learned</h3>
+        <p>{aboutData.whatILearnedText1}</p>
+        <h4>Skills I was able to use include:</h4>
+        <ul>
+          <li>{aboutData.skillsUsedText1}</li>
+          <li>{aboutData.skillsUsedText2}</li>
+          <li>{aboutData.skillsUsedText3}</li>
+        </ul>
+        <h4>Some of the challenges I had along the way:</h4>
+        <ul>
+          <li>{aboutData.challengesEncounteredText1}</li>
+          <li>{aboutData.challengesEncounteredText2}</li>
+        </ul>
+        <h4>Technical and non-technical things that I learned:</h4>
+      </div>
+      <div className="aboutSection">
+        <h3>Planned Improvements</h3>
+        <p>List of planned improvements/additions to the game</p>
+      </div>
+
+      <div className="bottom" />
     </PageWrapper>
   );
 }
 
 const PageWrapper = styled.div`
-  padding: 10px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  .bottom {
+    margin-bottom: var(--marginBottom);
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  .aboutSection {
+    margin-bottom: 20px;
+  }
 `;
