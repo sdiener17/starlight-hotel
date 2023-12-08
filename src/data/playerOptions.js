@@ -4,7 +4,7 @@ export const playerOptions = {
       { id: 0, text: `\"That's a lot of laundry.\"` },
       {
         id: 1,
-        text: `\"Wow, I'll have to tell my mom to stop complaining about having to do all of my brothers' laundry.\"`,
+        text: `\"I'll have to stop complaining about having to do my laundry once a week.\"`,
       },
     ],
     scene2: [{ id: 0, text: `hey` }],
