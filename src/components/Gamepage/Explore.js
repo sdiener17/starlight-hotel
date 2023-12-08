@@ -76,7 +76,7 @@ export default function Explore({ locationId, backTo }) {
 }
 
 const PageWrapper = styled.div`
-  font-family: "fira sans";
+  font-family: "Fira Sans";
   margin-bottom: var(--marginBottom);
 
   .discoveryContainer {
@@ -85,6 +85,8 @@ const PageWrapper = styled.div`
     font-size: 1.4rem;
   }
   .buttonUnopened {
+    font-family: "Fira Sans";
+    font-size: 1.4rem;
     width: 90%;
     height: 20%;
     padding: 15px;
