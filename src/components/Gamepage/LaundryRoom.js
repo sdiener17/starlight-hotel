@@ -57,6 +57,7 @@ const PageWrapper = styled.div`
   position: sticky;
   top: 0;
   padding: 1rem 1.5rem;
+  font-family: "Fira Sans";
   .buttonWrapper {
     display: flex;
     flex-direction: row;
