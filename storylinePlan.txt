@@ -15,7 +15,7 @@ storing under the folding counter to a better hiding spot to keep the Men in Blu
 - Linen Lady begins wearing a "cape" at work, made of one of the white and yellow striped beach towels. She gives Kira a washcloth
 cape to wear as well, and dubs her "Material Girl".
 - Skipper begins acting strange, and Linen Lady sends Kira on quests to gather information. (The quests will increasingly rely on 
-the player to complete by using their knowledge and skillfuly interacting with coworkers/solving puzzles)
+the player to complete by using their knowledge and skillfuly interacting with coworkers/solving puzzles).
     - (Ideally, part of the reason Kira is willing to help is to help save Skipper, since she otherwise would just 
     find the situation odd and would realistically just quit her job)
 - Through exploring, interacting with coworkers, and solving puzzles, Kira will discover that the hotel has a strange life-force behind it 

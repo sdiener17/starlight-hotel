@@ -43,14 +43,8 @@ export default function About() {
       <div className="aboutSection">
         <h3>Technical Details</h3>
         <p>{aboutData.technicalDetailsText1}</p>
-        <p>
-          Stuff about the process I took to make the game, technologies used,
-          things I learned, challenges, etc.
-        </p>
-      </div>
-      <div className="aboutSection">
-        <h3>Story Outline</h3>
-        <p>Outline of the planned game story and/or link to more info</p>
+        <p>{aboutData.technicalDetailsText2}</p>
+        <p>{aboutData.technicalDetailsText3}</p>
       </div>
       <div className="aboutSection">
         <h3>What I Learned</h3>
@@ -61,12 +55,16 @@ export default function About() {
           <li>{aboutData.skillsUsedText2}</li>
           <li>{aboutData.skillsUsedText3}</li>
         </ul>
-        <h4>Some of the challenges I had along the way:</h4>
+        <h4>Some of the challenges I faced along the way:</h4>
         <ul>
           <li>{aboutData.challengesEncounteredText1}</li>
           <li>{aboutData.challengesEncounteredText2}</li>
         </ul>
         <h4>Technical and non-technical things that I learned:</h4>
+        <ul>
+          <li>{aboutData.technicalThingsLearnedText1}</li>
+          <li>{aboutData.technicalThingsLearnedText2}</li>
+        </ul>
       </div>
       <div className="aboutSection">
         <h3>Planned Improvements</h3>
@@ -74,7 +72,7 @@ export default function About() {
           <li>{aboutData.plannedImprovementsText1}</li>
           <li>{aboutData.plannedImprovementsText2}</li>
           <li>{aboutData.plannedImprovementsText3}</li>
-          <li>{aboutData.plannedImprovementsText4}</li>
+          {/* <li>{aboutData.plannedImprovementsText4}</li> */}
         </ul>
       </div>
 
