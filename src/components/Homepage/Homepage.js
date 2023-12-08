@@ -36,7 +36,11 @@ export default function Homepage({ setGameStarted }) {
         <button className="gameButton homeButton" onClick={handleNewGameClick}>
           Start New Game
         </button>
-        <button className="gameButton homeButton" onClick={handleLoadGameClick}>
+        <button
+          className="gameButton homeButton"
+          onClick={handleLoadGameClick}
+          disabled={true}
+        >
           Load Game From File
         </button>
       </div>
