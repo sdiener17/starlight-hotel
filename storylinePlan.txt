@@ -1,0 +1,26 @@
+The Starlight Hotel Plot overview
+
+- The player starts the game as a new hire named Kira at the Starlight Hotel laundry room, a fancy beachside Hotel.
+- Kira starts work, and soon meets a coworker named Cera who seems a bit odd, but friendly.
+- Kira overhears a conversation between Cera and her friend Skipper (a houseman) where Cera warns him to be careful now that he's been assigned 
+a house. Skipper jokingly says he'll back out as soon as he starts hoarding linens and Cera makes a comment about not
+wanting to have to fight him over duvets.
+- While working and interacting with the environment, Kira discovers that the king duvets are a common point of tension
+in the laundry room with the housemen always wanting more and sometimes stealing them out of each others bins.
+- One day, Cera pulls Kira behind the racks of tablecloths as two men in blue shirts with sunglasses enter the laundry room. Cera
+calls them the "Men in Blue" and says they are not to be trusted. She has Kira help her move some king duvets that she had been
+storing under the folding counter to a better hiding spot to keep the Men in Blue from finding them.
+- Cera recruits Kira as her "sidekick" from that point forward and tells her that she really goes by "Linen Lady"
+    - Points of the mystery that have already been uncovered by Linen Lady are slowly revealed through various interactions.
+- Linen Lady begins wearing a "cape" at work, made of one of the white and yellow striped beach towels. She gives Kira a washcloth
+cape to wear as well, and dubs her "Material Girl".
+- Skipper begins acting strange, and Linen Lady sends Kira on quests to gather information. (The quests will increasingly rely on 
+the player to complete by using their knowledge and skillfuly interacting with coworkers/solving puzzles)
+    - (Ideally, part of the reason Kira is willing to help is to help save Skipper, since she otherwise would just 
+    find the situation odd and would realistically just quit her job)
+- Through exploring, interacting with coworkers, and solving puzzles, Kira will discover that the hotel has a strange life-force behind it 
+that is driven by the housemen (who she discovers are half-house, half-men), who collect linens to feed energy to this force. She will discover 
+that this force is Rick the MEGABEAST, who lives under the golf course pond. The Men in
+Blue are agents who observe the employees behavior to report back to this force as well. The hotel is growing larger, and could consume
+the entire city if not stopped. Linen Lady and Material Girl (with the help of some unexpected allies) will have to figure out how
+to stop Rick the MEGABEAST before the Starlight Hotel grows too large to stop.

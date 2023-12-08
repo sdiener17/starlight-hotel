@@ -27,13 +27,19 @@ export const npcSlice = createSlice({
     },
     incrementNpcCurrTextSet: (state, action) => {
       state.map((npc) => {
+        console.log("We're mapping the npcs");
         if (npc.npcId === action.payload.npcId) {
-          npc.npcCurrTextSet += 1;
+          console.log("Setting new value for the npc!");
+          npc = { npcCurrTextSet: npc.npcCurrTextSet + 1, ...npc };
         }
+        npc = { ...npc };
       });
+      return state;
     },
   },
 });
+
+export const selectNpcList = (state) => state.npcList;
 
 export function selectNpcFromId(npcl, id) {
   return npcl.find((npc) => Number(npc.npcId) === Number(id));
