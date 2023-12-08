@@ -30,11 +30,12 @@ const PageWrapper = styled.nav`
   position: sticky;
   top: 0;
   padding: 1rem 1.5rem;
-  background: var(--primarySiteColor);
+  background: var(--siteColor4);
   border-bottom: 5px solid var(--secondarySiteColor);
   z-index: 999;
   font-family: "Helvetica Neue";
   font-size: 1.5rem;
+  color: var(--cardGrey);
   /* width: 100%; */
   margin: 0;
   .headerMain {

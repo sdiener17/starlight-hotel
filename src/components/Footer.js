@@ -55,11 +55,7 @@ const FootWrapper = styled.footer`
     width: 100%;
     max-height: 80px;
     //padding: 1rem 1.5rem;
-    background: linear-gradient(
-      to top right,
-      var(--primarySiteColor),
-      var(--darkSiteColor)
-    );
+    background-color: var(--siteColor4);
     border-bottom: 5px solid var(--secondarySiteColor);
     z-index: 999;
     color: var(--lightGrey);
