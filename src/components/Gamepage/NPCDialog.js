@@ -138,6 +138,7 @@ export default function NPCDialog({
             <button
               className="gameButton nextButton"
               onClick={(e) => nextStep(1)}
+              disabled={true}
             >
               Next
             </button>
@@ -157,12 +158,12 @@ export default function NPCDialog({
           </button>
         </div>
       )}
-      <button
+      {/* <button
         className="gameButton nextButton"
         onClick={(e) => forceReRenderNextStep()}
       >
         Next (Better)
-      </button>
+      </button> */}
 
       <button
         className="gameButton"

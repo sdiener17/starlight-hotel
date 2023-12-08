@@ -1,5 +1,5 @@
 export const playerData = {
-  currentLocation: "laundry",
+  currentLocation: "gameStart",
   exploreStates: [
     {
       locationId: 0,
