@@ -11,3 +11,5 @@ An overview of the storyline planned for the game is available [here](/storyline
 The published version is hosted on Netlify and is available to play [here](https://starlight-hotel.netlify.app/).
 
 You may also fork this repository to run it on your machine using `npm start` in the project directory to run the app in development mode.
+
+*Note- The published site is not currently responsive. It will not work well to view on a mobile device.
